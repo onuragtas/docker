@@ -1,0 +1,12 @@
+sites/*
+etc/nginx/*
+!etc/nginx/default*
+mysql/*
+postgres/*
+logs/*
+Ssl/*
+mongo/*
+pgadmin/*
+postgres/*
+logs/access.log
+logs/error.log
