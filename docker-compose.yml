@@ -202,9 +202,8 @@ services:
       - '88:80'
       - '4433:443'
     volumes:
-      - './sites:/usr/local/apache2/htdocs'
-      - './etc/extras:/usr/local/apache2/conf/extra'
-
+      - './sites:/var/www/html'
+      - './httpd/sites-enabled:/etc/apache2/sites-enabled'
 
   nginx:
     build: ./nginx
