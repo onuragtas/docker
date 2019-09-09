@@ -186,6 +186,26 @@ services:
 #      - './Ssl/:/root/Ssl/'
 
 
+  httpd:
+    build: ./httpd
+    container_name: httpd
+    restart: always
+    networks:
+      net:
+        ipv4_address: 172.28.1.13
+    links:
+      - db
+      - php56
+      - php70
+      - php72
+    ports:
+      - '88:80'
+      - '4433:443'
+    volumes:
+      - './sites:/usr/local/apache2/htdocs'
+      - './etc/extras:/usr/local/apache2/conf/extra'
+
+
   nginx:
     build: ./nginx
     container_name: nginx

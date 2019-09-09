@@ -3,14 +3,17 @@ FROM php:7.0-fpm-alpine
 ARG XDEBUG_HOST="127.0.0.1"
 ARG XDEBUG_PORT=9001
 
-RUN apk add --no-cache --update --virtual buildDeps libcurl curl curl-dev autoconf gcc make g++ zlib-dev libzip-dev postgresql-dev libxml2-dev
+RUN apk add --no-cache --update --virtual buildDeps libcurl curl curl-dev autoconf gcc make g++ zlib-dev libzip-dev postgresql-dev libxml2-dev libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev gd icu-dev libxslt libxslt-dev libmemcached libmemcached-dev
 
-RUN docker-php-ext-install curl zip mysqli pdo pdo_pgsql pdo_mysql soap
+RUN docker-php-ext-install mbstring curl zip mysqli pdo pdo_pgsql pdo_mysql soap bcmath
 
 
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
+RUN pecl install xdebug redis-4.0.1 mongodb
+RUN docker-php-ext-enable redis xdebug mongodb
 RUN apk del buildDeps
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+&& composer --version
 
 RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
