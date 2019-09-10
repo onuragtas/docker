@@ -4,7 +4,7 @@ ARG XDEBUG_HOST="127.0.0.1"
 ARG XDEBUG_PORT=9001
 ENV COMPOSER_HOME=/root/.composer
 
-RUN apk add --no-cache --update --virtual buildDeps libcurl curl curl-dev autoconf gcc make g++ zlib-dev libzip-dev postgresql-dev libxml2-dev libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev gd icu-dev libxslt libxslt-dev libmemcached libmemcached-dev
+RUN apk add --no-cache --update --virtual buildDeps bash libcurl curl curl-dev autoconf gcc make g++ zlib-dev libzip-dev postgresql-dev libxml2-dev libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libxpm-dev gd icu-dev libxslt libxslt-dev libmemcached libmemcached-dev
 
 RUN docker-php-ext-install mysql curl zip mysqli pdo pdo_pgsql pdo_mysql soap exif gd mbstring intl xsl mysql bcmath sockets
 
