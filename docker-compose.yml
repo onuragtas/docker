@@ -1,5 +1,23 @@
 version: '3'
 services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      net:
+        ipv4_address: 172.28.1.14
+
+
   adminer:
     image: adminer
     restart: always
@@ -160,7 +178,7 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - '8080:80'
+      - '8088:80'
     links:
       - 'db:db'
 
@@ -197,6 +215,7 @@ services:
       - db
       - php56
       - php70
+      - php71
       - php72
     ports:
       - '88:80'
@@ -216,6 +235,7 @@ services:
       - 'db:db'
       - php56
       - php70
+      - php71
       - php72
     ports:
       - '80:80'
@@ -243,6 +263,17 @@ services:
     build: ./php70
     tty: true
     container_name: php70
+    restart: always
+    expose:
+      - 9000
+    volumes:
+      - './sites/:/var/www/html/'
+    networks:
+      net:
+  php71:
+    build: ./php71
+    tty: true
+    container_name: php71
     restart: always
     expose:
       - 9000
