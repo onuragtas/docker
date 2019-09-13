@@ -1,3 +1,4 @@
+.idea/
 sites/*
 etc/nginx/*
 !etc/nginx/default*
@@ -10,3 +11,4 @@ pgadmin/*
 postgres/*
 logs/access.log
 logs/error.log
+.env
