@@ -256,6 +256,7 @@ services:
       - 9000
     volumes:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+      - /etc/hosts:/etc/hosts
     networks:
       net:
 

@@ -42,7 +42,8 @@ RUN apt-get update \
         libmemcached-dev \
         freetds-dev \
 	libssl-dev \
-	openssl
+	openssl \
+	libcurl4-gnutls-dev
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 && composer --version
@@ -55,6 +56,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
     && pecl install memcached \
     && pecl install mongodb \
     && docker-php-ext-install \
+	    curl \
             iconv \
             mbstring \
             intl \
