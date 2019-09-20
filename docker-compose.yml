@@ -1,6 +1,22 @@
 version: '3'
 services:
 
+  graylog:
+    build: ./graylog
+    tty: true
+    volumes:
+      - ./graylog/elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml
+      - ./graylog/server.conf:/etc/graylog/server/server.conf
+    expose:
+      - 9000
+    ports:
+      - 9009:9000
+      - 12201:12201
+    networks:
+      net:
+        ipv4_address: ${GRAYLOG_HOST}
+
+
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
@@ -38,7 +54,7 @@ services:
       - ${ELASTICSEARCH_PORT}:9200
       - ${ELASTICSEARCH_PORT2}:9300
     volumes:
-      - ${ELASTICSEARCH_DATA}:/bitnami/elasticsearch/data'
+      - ${ELASTICSEARCH_DATA}:/bitnami/elasticsearch/data
     networks:
       net:
         ipv4_address: ${ELASTICSEARCH_HOST}
@@ -207,7 +223,9 @@ services:
   httpd:
     build: ./httpd
     container_name: httpd
+    tty: true
     restart: always
+    tty: true
     networks:
       net:
         ipv4_address: ${APACHE_HOST}
