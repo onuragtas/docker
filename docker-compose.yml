@@ -160,7 +160,7 @@ services:
       - REDIS_DEFAULT_PASSWORD=${REDIS_PASSWORD}
       - MASTER_DEFAULT_PASSWORD=${REDIS_PASSWORD}
     ports:
-      - '6379:6379'
+      - ${REDIS_PORT}:6379
 
   db:
     image: 'mariadb:latest'
@@ -266,7 +266,11 @@ services:
 
 
   php72:
-    build: ./php72
+    build:
+      context: ./php72
+      args:
+        - XDEBUG_PORT=${XDEBUG_PORT}
+        - XDEBUG_HOST=${XDEBUG_HOST}
     tty: true
     container_name: php72
     restart: always
@@ -274,12 +278,15 @@ services:
       - 9000
     volumes:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
-      - /etc/hosts:/etc/hosts
     networks:
       net:
 
   php70:
-    build: ./php70
+    build:
+      context: ./php70
+      args:
+        - XDEBUG_PORT=${XDEBUG_PORT}
+        - XDEBUG_HOST=${XDEBUG_HOST}
     tty: true
     container_name: php70
     restart: always
@@ -290,7 +297,11 @@ services:
     networks:
       net:
   php71:
-    build: ./php71
+    build:
+      context: ./php71
+      args:
+        - XDEBUG_PORT=${XDEBUG_PORT}
+        - XDEBUG_HOST=${XDEBUG_HOST}
     tty: true
     container_name: php71
     restart: always
@@ -302,7 +313,11 @@ services:
       net:
 
   php56:
-    build: ./php56
+    build:
+      context: ./php56
+      args:
+        - XDEBUG_PORT=${XDEBUG_PORT}
+        - XDEBUG_HOST=${XDEBUG_HOST}
     tty: true
     container_name: php56
     restart: always
