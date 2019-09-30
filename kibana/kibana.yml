@@ -1,0 +1,12 @@
+server.port: 5601
+xpack.security.enabled: false
+server.host: "0.0.0.0"
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+kibana.index: ".kibana"
+elasticsearch.ssl.verificationMode: full
+
+
+
+#inverter sorting
+#hashmap elasticsearch
+#analyz indences

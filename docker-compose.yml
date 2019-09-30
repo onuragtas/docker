@@ -48,16 +48,43 @@ services:
         max-size: 50m
 
   elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
     container_name: elasticsearch
-    image: 'bitnami/elasticsearch:7'
-    ports:
-      - ${ELASTICSEARCH_PORT}:9200
-      - ${ELASTICSEARCH_PORT2}:9300
-    volumes:
-      - ${ELASTICSEARCH_DATA}:/bitnami/elasticsearch/data
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=docker-cluster
+      - cluster.initial_master_nodes=elasticsearch
+      - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
+    ulimits:
+      nproc: 65535
+      memlock:
+        soft: -1
+        hard: -1
+    cap_add:
+      - ALL
+    # privileged: true
     networks:
       net:
         ipv4_address: ${ELASTICSEARCH_HOST}
+    ports:
+      - ${ELASTICSEARCH_PORT}:9200
+      - ${ELASTICSEARCH_PORT2}:9300
+
+  kibana:
+    container_name: kibana
+    image: 'kibana:7.3.2'
+    environment:
+      - kibana.index=.kibana1
+      - elasticsearch.hosts=[http://elasticsearch1:9200]
+#    volumes:
+#      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    links:
+      - elasticsearch
+    ports:
+      - ${KIBANA_PORT}:5601
+    networks:
+      net:
+        ipv4_address: ${KIBANA_HOST}
 
 
   elastichq:
@@ -274,6 +301,8 @@ services:
     tty: true
     container_name: php72
     restart: always
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker"
     expose:
       - 9000
     volumes:
