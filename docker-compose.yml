@@ -75,7 +75,7 @@ services:
     image: 'kibana:7.3.2'
     environment:
       - kibana.index=.kibana1
-      - elasticsearch.hosts=[http://elasticsearch1:9200]
+      - elasticsearch.hosts=[http://elasticsearch:9200, 172.16.16.113:10200]
 #    volumes:
 #      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     links:
@@ -302,7 +302,7 @@ services:
     container_name: php72
     restart: always
     environment:
-      PHP_IDE_CONFIG: "serverName=docker"
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     expose:
       - 9000
     volumes:
@@ -319,6 +319,8 @@ services:
     tty: true
     container_name: php70
     restart: always
+    environment:
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     expose:
       - 9000
     volumes:
@@ -334,6 +336,8 @@ services:
     tty: true
     container_name: php71
     restart: always
+    environment:
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     expose:
       - 9000
     volumes:
@@ -350,6 +354,8 @@ services:
     tty: true
     container_name: php56
     restart: always
+    environment:
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     expose:
       - 9000
     volumes:
