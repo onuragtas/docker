@@ -41,6 +41,7 @@ RUN apt-get update \
         libaio-dev \
         libmemcached-dev \
         freetds-dev \
+        libyaml-dev \
 	libssl-dev \
 	openssl \
 	libcurl4-gnutls-dev
@@ -55,6 +56,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
     && pecl install redis \
     && pecl install memcached \
     && pecl install mongodb \
+    && pecl install yaml \
     && docker-php-ext-install \
 	    curl \
             iconv \
@@ -94,3 +96,5 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    echo "xdebug.remote_mode = req" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
    echo "xdebug.remote_host=$XDEBUG_HOST" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini &&\
    echo "xdebug.remote_port=$XDEBUG_PORT" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+RUN echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini

@@ -23,7 +23,8 @@ RUN apt-get install -y --force-yes \
 
 RUN docker-php-ext-install exif gd mbstring intl xsl zip mysql mysqli pdo pdo_pgsql pdo_mysql soap bcmath sockets
 
-RUN pecl install mongo && echo "extension=mongo.so" >> /usr/local/etc/php/conf.d/mongodb.ini
+RUN pecl install mongodb-1.4.1 && echo "extension=mongodb.so" >> ${PHP_ROOT_DIR}/php/conf.d/mongodb.ini
+RUN pecl install mongo-1.6.6 && echo "extension=mongo.so" >> ${PHP_ROOT_DIR}/php/conf.d/mongo.ini
 
 RUN mkdir -p $COMPOSER_HOME \
 && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
