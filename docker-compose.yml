@@ -1,22 +1,6 @@
 version: '3'
 services:
 
-#  graylog:
-#    build: ./graylog
-#    tty: true
-#    volumes:
-#      - ./graylog/elasticsearch.yml:/etc/elasticsearch/elasticsearch.yml
-#      - ./graylog/server.conf:/etc/graylog/server/server.conf
-#    expose:
-#      - 9000
-#    ports:
-#      - 9009:9000
-#      - 12201:12201
-#    networks:
-#      net:
-#        ipv4_address: ${GRAYLOG_HOST}
-
-
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
@@ -33,7 +17,6 @@ services:
       net:
         ipv4_address: ${RABBITMQ_HOST}
 
-
   adminer:
     image: adminer
     restart: always
@@ -47,8 +30,32 @@ services:
       options:
         max-size: 50m
 
+  elasticsearch_graylog:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
+    restart: always
+    container_name: elasticsearch_graylog
+    environment:
+      - http.host=0.0.0.0
+      - transport.host=localhost
+      - network.host=0.0.0.0
+      # Disable X-Pack security: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/security-settings.html#general-security-settings
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ${ELASTIC_GRAYLOG_DATA}:/bitnami/elasticsearch/data
+    networks:
+      net:
+        ipv4_address: ${ELASTIC_GRAYLOG_HOST}
+    ports:
+      - ${ELASTIC_GRAYLOG_PORT}:9200
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
+    restart: always
     container_name: elasticsearch
     environment:
       - node.name=elasticsearch
@@ -68,7 +75,6 @@ services:
         ipv4_address: ${ELASTICSEARCH_HOST}
     ports:
       - ${ELASTICSEARCH_PORT}:9200
-      - ${ELASTICSEARCH_PORT2}:9300
 
   kibana:
     container_name: kibana
@@ -76,8 +82,8 @@ services:
     environment:
       - kibana.index=.kibana1
       - elasticsearch.hosts=[http://elasticsearch:9200, 172.16.16.113:10200]
-#    volumes:
-#      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    #    volumes:
+    #      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     links:
       - elasticsearch
     ports:
@@ -94,23 +100,24 @@ services:
     environment:
       - HQ_DEFAULT_URL=${ELASTICHQ_DEFAULT_URL}
     ports:
-    - ${ELASTICHQ_PORT}:5000
+      - ${ELASTICHQ_PORT}:5000
     networks:
       net:
         ipv4_address: ${ELASTICHQ_HOST}
-#  redis-commander:
-#    container_name: redis-commander
-#    hostname: redis-commander
-#    build: ./redis-commander
-#    restart: always
-#    environment:
-#    - REDIS_HOST=172.28.1.4
-#    - REDIS_PASSWORD=redis
-#    ports:
-#    - "8081:80"
-#    networks:
-#      net:
-#        ipv4_address: 172.28.1.9
+
+  #  redis-commander:
+  #    container_name: redis-commander
+  #    hostname: redis-commander
+  #    build: ./redis-commander
+  #    restart: always
+  #    environment:
+  #    - REDIS_HOST=172.28.1.4
+  #    - REDIS_PASSWORD=redis
+  #    ports:
+  #    - "8081:80"
+  #    networks:
+  #      net:
+  #        ipv4_address: 172.28.1.9
 
   mongodb:
     image: mongo:latest
@@ -129,6 +136,29 @@ services:
       net:
         ipv4_address: ${MONGODB_HOST}
 
+  graylog:
+    image: graylog/graylog:2.4.0-1
+    restart: always
+    container_name: graylog
+    environment:
+      - GRAYLOG_PASSWORD_SECRET=somepasswordpepper # Password: admin
+      - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+      - GRAYLOG_WEB_ENDPOINT_URI=http://127.0.0.1:9000/api
+    links:
+      - mongodb:mongo
+      - elasticsearch_graylog
+    depends_on:
+      - mongodb
+      - elasticsearch_graylog
+    ports:
+      - ${GRAYLOG_PORT}:9000
+      - 514:514
+      - 514:514/udp
+      - 12201:12201
+      - 12201:12201/udp
+    networks:
+      net:
+        ipv4_address: ${GRAYLOG_HOST}
 
   postgres:
     image: postgres
@@ -161,6 +191,8 @@ services:
     networks:
       net:
         ipv4_address: ${PGADMIN_HOST}
+
+
   # node:
   #   build: ./nodeServer
   #   container_name: node
@@ -225,32 +257,9 @@ services:
     links:
       - 'db:db'
 
-
-#  server:
-#    build: ./server
-#    container_name: lemp
-#    restart: always
-#    networks:
-#      net:
-#        ipv4_address: 172.28.1.1
-#    links:
-#      - 'db:db'
-#    ports:
-#      - '80:80'
-#      - '443:443'
-#    volumes:
-#      - './etc/nginx/:/etc/nginx/sites-enabled/'
-#      - './etc/php-fpm.conf:/etc/php/7.2/fpm/php-fpm.conf'
-#      - './etc/supervisord.conf:/etc/supervisor/supervisord.conf'
-#      - './sites/:/var/www/html/'
-#      - './logs/:/var/log/nginx/'
-#      - './Ssl/:/root/Ssl/'
-
-
   httpd:
     build: ./httpd
     container_name: httpd
-    tty: true
     restart: always
     tty: true
     networks:
@@ -327,6 +336,7 @@ services:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
     networks:
       net:
+
   php71:
     build:
       context: ./php71
