@@ -23,8 +23,8 @@ RUN apt-get install -y --force-yes \
 
 RUN docker-php-ext-install exif gd mbstring intl xsl zip mysql mysqli pdo pdo_pgsql pdo_mysql soap bcmath sockets
 
-RUN pecl install mongodb-1.4.1 && echo "extension=mongodb.so" >> ${PHP_ROOT_DIR}/php/conf.d/mongodb.ini
-RUN pecl install mongo-1.6.6 && echo "extension=mongo.so" >> ${PHP_ROOT_DIR}/php/conf.d/mongo.ini
+RUN pecl install mongodb-1.4.1 && echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
+RUN pecl install mongo-1.6.6 && echo "extension=mongo.so" >> /usr/local/etc/php/conf.d/mongo.ini
 
 RUN mkdir -p $COMPOSER_HOME \
 && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
@@ -43,3 +43,6 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    echo "xdebug.remote_mode = req" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
    echo "xdebug.remote_host=${XDEBUG_HOST}" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini &&\
    echo "xdebug.remote_port=${XDEBUG_PORT}" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+#COPY --from=publish /etc/hosts /tmp/hosts
+#RUN echo $(cat /tmp/hosts) >> /etc/hosts
