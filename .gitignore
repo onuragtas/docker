@@ -12,3 +12,6 @@ postgres/*
 logs/access.log
 logs/error.log
 .env
+httpd/sites-enabled/*
+global/hosts
+global/ip

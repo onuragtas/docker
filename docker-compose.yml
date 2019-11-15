@@ -1,6 +1,15 @@
 version: '3'
 services:
 
+  global:
+    build: ./global
+    tty: true
+    container_name: global
+    volumes:
+      - ./global:/global
+    networks:
+      net:
+
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
@@ -310,12 +319,15 @@ services:
     tty: true
     container_name: php72
     restart: always
+    links:
+      - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     expose:
       - 9000
     volumes:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+      - ./global:/global
     networks:
       net:
 
@@ -328,12 +340,15 @@ services:
     tty: true
     container_name: php70
     restart: always
+    links:
+      - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     expose:
       - 9000
     volumes:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+      - ./global:/global
     networks:
       net:
 
@@ -346,12 +361,15 @@ services:
     tty: true
     container_name: php71
     restart: always
+    links:
+      - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     expose:
       - 9000
     volumes:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+      - ./global:/global
     networks:
       net:
 
@@ -364,12 +382,15 @@ services:
     tty: true
     container_name: php56
     restart: always
+    links:
+      - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
     expose:
       - 9000
     volumes:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+      - ./global:/global
     networks:
       net:
 
@@ -382,4 +403,6 @@ networks:
           - subnet: 172.28.0.0/16
 volumes:
   elasticsearch_data:
+    driver: local
+  global:
     driver: local

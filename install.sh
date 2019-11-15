@@ -1,5 +1,28 @@
 echo "Docker Installer"
 
+outside=$(cat .env | grep OUTSIDE)
+outside="${outside//OUTSIDE_IP=/}"
+
+hosts=$(cat /etc/hosts)
+hosts_count=$(cat /etc/hosts | wc -l)
+echo "" > global/hosts
+for n in $( seq 1 $hosts_count)
+do
+    line=$(cat /etc/hosts | grep '' | sed -n "${n}p")
+    line="${line:0:1}"
+    if [ "$line" != "#" ]; then
+      domain=$(cat /etc/hosts | grep '' | awk '{print $2}' | sed -n "${n}p")
+      ip=$(cat /etc/hosts | grep '' | awk '{print $1}' | sed -n "${n}p")
+      if [ "$domain" != "" ] && [ "$domain" != "localhost" ] && [ "$ip" == "127.0.0.1" ]; then
+          line=$(cat /etc/hosts | grep '' | sed -n "${n}p")
+          echo "$domain" >> global/hosts
+      fi
+    fi
+done
+
+chmod +x global/setup.sh
+
+
 if [ -f ".env" ]; then
   echo ".env already exists"
 else
