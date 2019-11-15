@@ -13,9 +13,9 @@ do
     if [ "$line" != "#" ]; then
       domain=$(cat /etc/hosts | grep '' | awk '{print $2}' | sed -n "${n}p")
       ip=$(cat /etc/hosts | grep '' | awk '{print $1}' | sed -n "${n}p")
-      if [ "$domain" != "" ] && [ "$domain" != "localhost" ] && [ "$ip" == "127.0.0.1" ]; then
+      if [ "$domain" != "" ] && [ "$domain" != "localhost" ]; then
           line=$(cat /etc/hosts | grep '' | sed -n "${n}p")
-          echo "$domain" >> global/hosts
+          echo "$ip $domain" >> global/hosts
       fi
     fi
 done
