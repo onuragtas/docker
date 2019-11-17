@@ -16,8 +16,55 @@ found_in_hosts() {
   return
 }
 
+is_exists_conf() {
+  find=$(ls $1 | grep $2)
+  if [ "$find" == "" ]; then
+    echo "false"
+    return
+  else
+    echo "true"
+    return
+  fi
+}
+
 read -p "type (nginx or apache2): " type
 read -p "domain: " domain
+
+if [ "$type" == "nginx" ]; then
+  if [ "$(is_exists_conf "etc/nginx" $domain)" == "true" ]; then
+    read -p "this conf is exists. Continue? (y/n/c): " confcontinue
+    if [ "$confcontinue" == "n" ]; then
+      while [ true ]; do
+        read -p "domain: " domain
+        if [ "$(is_exists_conf "etc/nginx" $domain)" == "false" ]; then
+          break
+        else
+          read -p "$domain exists, domain: " domain
+        fi
+      done
+    elif [ "$confcontinue" == "c" ]; then
+      exit 1
+    fi
+  fi
+elif [ "$type" == "apache2" ]; then
+  if [ "$(is_exists_conf "httpd/sites-enabled" $domain)" == "true" ]; then
+    read -p "this conf is exists. Continue? (y/n/c): " confcontinue
+    if [ "$confcontinue" == "n" ]; then
+      while [ true ]; do
+        read -p "domain: " domain
+        if [ "$(is_exists_conf "httpd/sites-enabled" $domain)" == "false" ]; then
+          break
+        else
+          read -p "$domain exists, domain: " domain
+        fi
+      done
+    elif [ "$confcontinue" == "c" ]; then
+      exit 1
+    fi
+  fi
+else
+  exit 1
+fi
 
 if [ "$(found_in_hosts $domain)" == "true" ]; then
   echo "$ip $domain exists in /etc/hosts"
