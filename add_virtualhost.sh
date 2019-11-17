@@ -34,8 +34,8 @@ if [ "$type" == "nginx" ]; then
   if [ "$(is_exists_conf "etc/nginx" $domain)" == "true" ]; then
     read -p "this conf is exists. Continue? (y/n/c): " confcontinue
     if [ "$confcontinue" == "n" ]; then
+      read -p "domain: " domain
       while [ true ]; do
-        read -p "domain: " domain
         if [ "$(is_exists_conf "etc/nginx" $domain)" == "false" ]; then
           break
         else
@@ -50,8 +50,8 @@ elif [ "$type" == "apache2" ]; then
   if [ "$(is_exists_conf "httpd/sites-enabled" $domain)" == "true" ]; then
     read -p "this conf is exists. Continue? (y/n/c): " confcontinue
     if [ "$confcontinue" == "n" ]; then
+      read -p "domain: " domain
       while [ true ]; do
-        read -p "domain: " domain
         if [ "$(is_exists_conf "httpd/sites-enabled" $domain)" == "false" ]; then
           break
         else
