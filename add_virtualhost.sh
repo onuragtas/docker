@@ -160,3 +160,9 @@ if [ "$(found_in_hosts $domain)" == "false" ]; then
   echo "adding /etc/hosts"
   sudo sh -c 'echo "127.0.0.1 '$domain'" >> /etc/hosts'
 fi
+
+if [ "$type" == "nginx" ]; then
+  docker-compose restart nginx
+else
+  docker-compose restart httpd
+fi
