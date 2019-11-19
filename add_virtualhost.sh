@@ -165,4 +165,5 @@ if [ "$type" == "nginx" ]; then
   docker-compose restart nginx
 else
   docker-compose restart httpd
+  docker-compose restart nginx
 fi
