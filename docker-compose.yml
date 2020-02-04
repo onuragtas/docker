@@ -10,6 +10,42 @@ services:
     networks:
       net:
 
+  sentry:
+    container_name: sentry
+    image: sentry
+    env_file:
+      - .env
+    ports:
+      - ${SENTRY_PORT}:9000
+    depends_on:
+      - postgres
+      - redis
+    tty: true
+    stdin_open: true
+    networks:
+      net:
+        ipv4_address: ${SENTRY_HOST}
+
+  cron:
+    container_name: sentry-cron
+    image: sentry
+    env_file:
+      - .env
+    command: run cron
+    depends_on:
+      - postgres
+      - redis
+
+  worker:
+    container_name: sentry-worker
+    image: sentry
+    env_file:
+      - .env
+    command: run worker
+    depends_on:
+      - postgres
+      - redis
+
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
