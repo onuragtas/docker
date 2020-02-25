@@ -223,7 +223,7 @@ services:
   postgres:
     image: postgres
     container_name: postgres
-    environment:f
+    environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PGDATA: /data/postgres
