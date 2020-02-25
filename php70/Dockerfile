@@ -8,7 +8,7 @@ RUN apk add --no-cache --update --virtual buildDeps bash libcurl curl curl-dev a
 RUN docker-php-ext-install mbstring curl zip mysqli pdo pdo_pgsql pdo_mysql soap bcmath
 
 
-RUN pecl install xdebug redis-4.0.1 mongodb
+RUN pecl install xdebug-2.7.0 redis-4.0.1 mongodb
 RUN docker-php-ext-enable redis xdebug mongodb
 RUN apk del buildDeps
 
