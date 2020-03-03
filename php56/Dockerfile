@@ -1,5 +1,4 @@
-FROM php:5.6.3-fpm
-LABEL maintainer="Sinan Turgut <mail@sinanturgut.com.tr>"
+FROM php:5.6.4-fpm
 
 ENV COMPOSER_HOME=/root/.composer
 
