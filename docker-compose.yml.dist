@@ -364,11 +364,7 @@ services:
 
 
   php72:
-    build:
-      context: ./php72
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
+    image: onuragtas/php7.2-fpm:latest
     tty: true
     container_name: php72
     restart: always
@@ -376,6 +372,8 @@ services:
       - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+      XDEBUG_PORT: ${XDEBUG_PORT}
+      XDEBUG_HOST: ${XDEBUG_HOST}
     expose:
       - 9000
     volumes:
@@ -385,11 +383,7 @@ services:
       net:
 
   php70:
-    build:
-      context: ./php70
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
+    image: onuragtas/php7.0-fpm:latest
     tty: true
     container_name: php70
     restart: always
@@ -397,6 +391,8 @@ services:
       - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+      XDEBUG_PORT: ${XDEBUG_PORT}
+      XDEBUG_HOST: ${XDEBUG_HOST}
     expose:
       - 9000
     volumes:
@@ -406,11 +402,7 @@ services:
       net:
 
   php74:
-    build:
-      context: ./php74
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
+    image: onuragtas/php7.4-fpm:latest
     tty: true
     container_name: php74
     restart: always
@@ -418,6 +410,8 @@ services:
       - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+      XDEBUG_PORT: ${XDEBUG_PORT}
+      XDEBUG_HOST: ${XDEBUG_HOST}
     expose:
       - 9000
     volumes:
@@ -427,11 +421,7 @@ services:
       net:
 
   php71:
-    build:
-      context: ./php71
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
+    image: onuragtas/php7.1-fpm:latest
     tty: true
     container_name: php71
     restart: always
@@ -439,6 +429,8 @@ services:
       - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+      XDEBUG_PORT: ${XDEBUG_PORT}
+      XDEBUG_HOST: ${XDEBUG_HOST}
     expose:
       - 9000
     volumes:
@@ -448,11 +440,7 @@ services:
       net:
 
   php56:
-    build:
-      context: ./php56
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
+    image: onuragtas/php5.6-fpm:latest
     tty: true
     container_name: php56
     restart: always
@@ -460,6 +448,8 @@ services:
       - global
     environment:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+      XDEBUG_PORT: ${XDEBUG_PORT}
+      XDEBUG_HOST: ${XDEBUG_HOST}
     expose:
       - 9000
     volumes:
