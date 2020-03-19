@@ -361,6 +361,7 @@ services:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
       - './logs/:/var/log/nginx/'
       - ${NGINX_SSL_PATH}:/root/Ssl/
+      - './etc/nginx.conf/:/etc/nginx/nginx.conf'
 
 
   php72:
@@ -374,6 +375,7 @@ services:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
       XDEBUG_PORT: ${XDEBUG_PORT}
       XDEBUG_HOST: ${XDEBUG_HOST}
+      XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
     expose:
       - 9000
     volumes:
@@ -393,6 +395,7 @@ services:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
       XDEBUG_PORT: ${XDEBUG_PORT}
       XDEBUG_HOST: ${XDEBUG_HOST}
+      XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
     expose:
       - 9000
     volumes:
@@ -412,6 +415,7 @@ services:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
       XDEBUG_PORT: ${XDEBUG_PORT}
       XDEBUG_HOST: ${XDEBUG_HOST}
+      XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
     expose:
       - 9000
     volumes:
@@ -431,6 +435,7 @@ services:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
       XDEBUG_PORT: ${XDEBUG_PORT}
       XDEBUG_HOST: ${XDEBUG_HOST}
+      XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
     expose:
       - 9000
     volumes:
@@ -450,6 +455,7 @@ services:
       PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
       XDEBUG_PORT: ${XDEBUG_PORT}
       XDEBUG_HOST: ${XDEBUG_HOST}
+      XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
     expose:
       - 9000
     volumes:
