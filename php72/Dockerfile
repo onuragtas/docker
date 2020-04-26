@@ -18,7 +18,8 @@ RUN apt-get update \
         libyaml-dev \
 	libssl-dev \
 	openssl \
-	libcurl4-gnutls-dev
+	libcurl4-gnutls-dev \
+	libpq-dev
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 && composer --version
@@ -45,6 +46,8 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
             zip \
             pcntl \
             ftp \
+            pgsql \
+            pdo_pgsql \
     && docker-php-ext-enable \
             sqlsrv \
             pdo_sqlsrv \
