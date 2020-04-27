@@ -105,7 +105,7 @@ if [ $type == "nginx" ]; then
     location / {
         index index.php;
         # Check if a file or directory index file exists, else route it to
-        try_files \$uri \$uri/ /index.php;
+        try_files $uri /index.php?$query_string;
     }
 
     # set expiration of assets to MAX for caching
