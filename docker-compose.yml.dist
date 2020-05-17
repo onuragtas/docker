@@ -129,7 +129,7 @@ services:
         hard: -1
     cap_add:
       - ALL
-     privileged: true
+    privileged: true
     networks:
       net:
         ipv4_address: ${ELASTICSEARCH_HOST}
@@ -142,8 +142,8 @@ services:
     environment:
       - kibana.index=.kibana1
       - elasticsearch.hosts=[http://elasticsearch:9200, 172.16.16.113:10200]
-        volumes:
-          - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    volumes:
+      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     links:
       - elasticsearch
     ports:
