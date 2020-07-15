@@ -1,3 +1,6 @@
 ip=$(ping -w 1 host.docker.internal |grep from |awk '{print $4}')
 ip="${ip:0:-1}"
+if [ "$ip" = "" ] then
+ip="172.28.1.1"
+fi
 echo $ip > /global/ip

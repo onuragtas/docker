@@ -113,23 +113,28 @@ services:
     ports:
       - ${ELASTIC_GRAYLOG_PORT}:9200
 
+  hunspell:
+    build: elastic/hunspell
+    depends_on:
+      - elasticsearch
+    volumes:
+      - hunspell-volume:/usr/share/elasticsearch/config/hunspell
+    entrypoint: sh
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
     restart: always
     container_name: elasticsearch
+#    command: "elasticsearch-plugin install analysis-icu"
+    volumes:
+      - hunspell-volume:/usr/share/elasticsearch/config/hunspell
+      - ./elastic_plugins:/usr/share/elasticsearch/plugins
     environment:
       - node.name=elasticsearch
       - cluster.name=docker-cluster
       - cluster.initial_master_nodes=elasticsearch
       - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
-    ulimits:
-      nproc: 65535
-      memlock:
-        soft: -1
-        hard: -1
-    cap_add:
-      - ALL
-    privileged: true
+      - ES_PLUGINS_INSTALL=analysis-icu
     networks:
       net:
         ipv4_address: ${ELASTICSEARCH_HOST}
