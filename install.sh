@@ -1,5 +1,29 @@
 echo "Docker Installer"
 
+function escape_slashes {
+    sed 's/\//\\\//g'
+}
+
+function change_line {
+    local OLD_LINE_PATTERN=$1; shift
+    local NEW_LINE=$1; shift
+    local FILE=$1
+
+    local NEW=$(echo "${NEW_LINE}" | escape_slashes)
+    sed -i .bak '/'"${OLD_LINE_PATTERN}"'/s/.*/'"${NEW}"'/' "${FILE}"
+    mv "${FILE}.bak" /tmp/
+}
+
+if command -v docker-machine &> /dev/null
+then
+    debug_ip=$(docker-machine ip)
+    cat_env=$(cat .env)
+    cat_xdebug_host_env=$(cat .env | grep XDEBUG_HOST)
+
+    ip=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | sed -n "1p")
+    change_line "$cat_xdebug_host_env" "XDEBUG_HOST=$ip" .env
+fi
+
 outside=$(cat .env | grep OUTSIDE)
 outside="${outside//OUTSIDE_IP=/}"
 
