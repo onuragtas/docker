@@ -31,6 +31,11 @@ RUN mkdir -p $COMPOSER_HOME \
 
 RUN pecl install xdebug-2.5.5
 
+ADD crontab /etc/cron.d/hello-cron
+RUN chmod 0644 /etc/cron.d/hello-cron
+RUN touch /var/log/cron.log
+RUN apt-get update
+RUN apt-get -y --force-yes install cron
 
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
@@ -43,9 +48,4 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    echo "xdebug.remote_host=${XDEBUG_HOST}" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini &&\
    echo "xdebug.remote_port=${XDEBUG_PORT}" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-ADD crontab /etc/cron.d/hello-cron
-RUN chmod 0644 /etc/cron.d/hello-cron
-RUN touch /var/log/cron.log
-RUN apt-get update
-RUN apt-get -y --force-yes install cron
 CMD cron & php-fpm

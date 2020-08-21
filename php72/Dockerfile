@@ -62,6 +62,14 @@ RUN docker-php-ext-enable xdebug
 
 RUN docker-php-ext-install bcmath
 
+RUN echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini
+
+ADD crontab /etc/cron.d/hello-cron
+RUN chmod 0644 /etc/cron.d/hello-cron
+RUN touch /var/log/cron.log
+RUN apt-get update
+RUN apt-get -y install cron
+
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 
@@ -74,11 +82,4 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    echo "xdebug.remote_host=$XDEBUG_HOST" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini &&\
    echo "xdebug.remote_port=$XDEBUG_PORT" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-RUN echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini
-
-ADD crontab /etc/cron.d/hello-cron
-RUN chmod 0644 /etc/cron.d/hello-cron
-RUN touch /var/log/cron.log
-RUN apt-get update
-RUN apt-get -y install cron
 CMD cron & php-fpm

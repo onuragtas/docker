@@ -16,3 +16,4 @@ httpd/sites-enabled/*
 global/hosts
 global/ip
 docker-compose.yml
+/global/dockerip

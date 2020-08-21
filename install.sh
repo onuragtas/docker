@@ -14,6 +14,8 @@ function change_line {
     mv "${FILE}.bak" /tmp/
 }
 
+echo "127.0.0.1" > global/dockerip
+
 if command -v docker-machine &> /dev/null
 then
     debug_ip=$(docker-machine ip)
@@ -21,7 +23,19 @@ then
     cat_xdebug_host_env=$(cat .env | grep XDEBUG_HOST)
 
     ip=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | sed -n "1p")
+    echo "XDebug ip is $ip"
+    echo "is change this writeip/enter"
+
+    read -p "xdebug ip:" changeip
+    if [ "$changeip" == "" ]; then
+      ip=$ip
+    else
+      ip=$changeip
+    fi
+    echo "XDebug ip is $ip"
+    echo "docker-machine default ip: $(docker-machine ip default)"
     change_line "$cat_xdebug_host_env" "XDEBUG_HOST=$ip" .env
+    echo "$(docker-machine ip default)" > global/dockerip
 fi
 
 outside=$(cat .env | grep OUTSIDE)
