@@ -69,11 +69,11 @@ RUN chmod 0644 /etc/cron.d/hello-cron
 RUN touch /var/log/cron.log
 RUN apt-get update
 RUN apt-get -y install cron
+RUN apt-get install -y git
 
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 
-RUN apt-get install -y git
 RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
    echo "xdebug.remote_connect_back=${XDEBUG_REMOTE_CONNECT_BACK}" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
