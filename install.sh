@@ -22,13 +22,22 @@ then
     cat_env=$(cat .env)
     cat_xdebug_host_env=$(cat .env | grep XDEBUG_HOST)
 
-    ip=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | sed -n "1p")
-    echo "XDebug ip is $ip"
-    echo "is change this writeip/enter"
+    i=1
+    ip=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
+    for dockIp in $ip
+    do
+      newIp=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | sed -n "${i}p")
+      echo "$i $newIp"
+      i=$((i+1))
+    done
+
+    echo "select write number/write"
 
     read -p "xdebug ip:" changeip
-    if [ "$changeip" == "" ]; then
-      ip=$ip
+    length=${#changeip}
+    if [ "$length" -lt 2 ]; then
+      newIp=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | sed -n "${changeip}p")
+      ip=$newIp
     else
       ip=$changeip
     fi
