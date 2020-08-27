@@ -67,6 +67,15 @@ RUN apt-get update
 RUN apt-get -y install cron
 RUN apt-get install -y git
 
+ENV PHALCON_VERSION=3.2.4
+
+RUN curl -sSL "https://codeload.github.com/phalcon/cphalcon/tar.gz/v${PHALCON_VERSION}" | tar -xz \
+    && cd cphalcon-${PHALCON_VERSION}/build \
+    && ./install \
+    && cp ../tests/_ci/phalcon.ini $(php-config --configure-options | grep -o "with-config-file-scan-dir=\([^ ]*\)" | awk -F'=' '{print $2}') \
+    && cd ../../ \
+    && rm -r cphalcon-${PHALCON_VERSION}
+
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 
@@ -78,13 +87,5 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    echo "xdebug.remote_host=$XDEBUG_HOST" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini &&\
    echo "xdebug.remote_port=$XDEBUG_PORT" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-ENV PHALCON_VERSION=3.2.4
-
-RUN curl -sSL "https://codeload.github.com/phalcon/cphalcon/tar.gz/v${PHALCON_VERSION}" | tar -xz \
-    && cd cphalcon-${PHALCON_VERSION}/build \
-    && ./install \
-    && cp ../tests/_ci/phalcon.ini $(php-config --configure-options | grep -o "with-config-file-scan-dir=\([^ ]*\)" | awk -F'=' '{print $2}') \
-    && cd ../../ \
-    && rm -r cphalcon-${PHALCON_VERSION}
 
 CMD cron & php-fpm
