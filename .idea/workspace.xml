@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbbb6c35-bdc5-4d61-a9dc-027d421aead4" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="bbbb6c35-bdc5-4d61-a9dc-027d421aead4" name="Default Changelist" comment="phalcon added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +14,23 @@
       <executable />
     </execution>
   </component>
-  <component name="PhpDebugGeneral" xdebug_debug_port="9001" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpDebugGeneral" xdebug_debug_port="9001" break_at_first_line="true" />
   <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost" />
   <component name="ProjectId" id="1QWs17HmSAdVU9LDDHwyNHZOwEm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/sites/html" />
@@ -24,21 +39,13 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/etc/nginx" />
+      <recent name="$PROJECT_DIR$/etc/nginx/back" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="php56/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
@@ -58,22 +65,22 @@
     <recent_temporary>
       <list>
         <item itemvalue="Docker.php56/Dockerfile" />
+        <item itemvalue="Docker.php56/Dockerfile" />
+        <item itemvalue="Docker.php56/Dockerfile" />
+        <item itemvalue="Docker.php56/Dockerfile" />
       </list>
     </recent_temporary>
   </component>
   <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@22a45ab5" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -87,10 +94,86 @@
       <option name="presentableId" value="Default" />
       <updated>1567897468922</updated>
       <workItem from="1567897470172" duration="5671000" />
+      <workItem from="1597645545775" duration="2052000" />
+      <workItem from="1597652127152" duration="691000" />
+      <workItem from="1597732268565" duration="1242000" />
+      <workItem from="1597818387410" duration="969000" />
+      <workItem from="1597996406633" duration="1541000" />
+      <workItem from="1598084159297" duration="7000" />
+      <workItem from="1598273054055" duration="1301000" />
+      <workItem from="1598336420353" duration="1764000" />
+      <workItem from="1598422515503" duration="2842000" />
+      <workItem from="1598511692833" duration="4418000" />
+      <workItem from="1598596671577" duration="1224000" />
     </task>
+    <task id="LOCAL-00001" summary="phalcon added">
+      <created>1598516362677</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598516362678</updated>
+    </task>
+    <task id="LOCAL-00002" summary="phalcon added">
+      <created>1598516541583</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598516541583</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="phalcon added" />
+    <option name="LAST_COMMIT_MESSAGE" value="phalcon added" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1598604183438">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1598604183438" />
+    <state x="100" y="0" width="1240" height="900" key="DiffContextDialog" timestamp="1598604059813">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="0" width="1240" height="900" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1598604059813" />
+    <state x="100" y="66" width="1240" height="829" key="DiffContextDialog/0.23.1440.823@0.23.1440.823" timestamp="1598530266027" />
+    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.827@0.23.1440.827" timestamp="1598367062224" />
+    <state x="100" y="84" width="1240" height="762" key="DiffContextDialog/0.23.1440.828@0.23.1440.828" timestamp="1598514680301" />
+    <state x="544" y="168" key="RollbackChangesDialog" timestamp="1598367004730">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="544" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1598367004730" />
+    <state x="320" y="178" key="Vcs.Push.Dialog.v2" timestamp="1598603676036">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="178" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1598603676036" />
+    <state x="378" y="212" width="683" height="476" key="find.popup" timestamp="1598530328624">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="378" y="212" width="683" height="476" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1598530328624" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1598530324235">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1598530324235" />
+    <state x="450" y="309" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1598525254577">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="450" y="309" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1598525254577" />
   </component>
 </project>
