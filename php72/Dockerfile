@@ -60,13 +60,6 @@ RUN docker-php-ext-install bcmath
 
 RUN echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini
 
-ADD crontab /etc/cron.d/hello-cron
-RUN chmod 0644 /etc/cron.d/hello-cron
-RUN touch /var/log/cron.log
-RUN apt-get update
-RUN apt-get -y install cron
-RUN apt-get install -y git
-
 ENV PHALCON_VERSION=3.2.4
 
 RUN curl -sSL "https://codeload.github.com/phalcon/cphalcon/tar.gz/v${PHALCON_VERSION}" | tar -xz \
@@ -75,6 +68,13 @@ RUN curl -sSL "https://codeload.github.com/phalcon/cphalcon/tar.gz/v${PHALCON_VE
     && cp ../tests/_ci/phalcon.ini $(php-config --configure-options | grep -o "with-config-file-scan-dir=\([^ ]*\)" | awk -F'=' '{print $2}') \
     && cd ../../ \
     && rm -r cphalcon-${PHALCON_VERSION}
+
+ADD crontab /etc/cron.d/hello-cron
+RUN chmod 0644 /etc/cron.d/hello-cron
+RUN touch /var/log/cron.log
+RUN apt-get update
+RUN apt-get -y install cron
+RUN apt-get install -y git
 
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
