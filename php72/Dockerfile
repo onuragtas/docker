@@ -53,7 +53,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
             mongodb
 
 
-RUN pecl install xdebug
+RUN pecl install xdebug-2.9.8
 RUN docker-php-ext-enable xdebug
 
 RUN docker-php-ext-install bcmath
