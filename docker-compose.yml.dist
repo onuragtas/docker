@@ -130,6 +130,8 @@ services:
       - cluster.name=docker-cluster
       - cluster.initial_master_nodes=elasticsearch
       - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
     networks:
       net:
         ipv4_address: ${ELASTICSEARCH_HOST}
