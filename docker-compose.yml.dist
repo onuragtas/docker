@@ -122,19 +122,14 @@ services:
     entrypoint: sh
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
+    build: ./elasticsearch
     restart: always
     container_name: elasticsearch
-#    command: "elasticsearch-plugin install analysis-icu"
-    volumes:
-      - hunspell-volume:/usr/share/elasticsearch/config/hunspell
-      - ./elastic_plugins:/usr/share/elasticsearch/plugins
     environment:
       - node.name=elasticsearch
       - cluster.name=docker-cluster
       - cluster.initial_master_nodes=elasticsearch
       - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
-      - ES_PLUGINS_INSTALL=analysis-icu
     networks:
       net:
         ipv4_address: ${ELASTICSEARCH_HOST}
