@@ -14,7 +14,7 @@ RUN apt-get install -y --force-yes \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev zlib1g-dev libicu-dev g++ \
+        zlib1g-dev libicu-dev g++ \
         && docker-php-ext-configure intl && docker-php-ext-install intl \
     && docker-php-ext-install  iconv mcrypt ftp \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
