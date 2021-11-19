@@ -1,4 +1,4 @@
-FROM php:5.6.4-fpm
+FROM php:5.6-fpm
 
 ENV COMPOSER_HOME=/root/.composer
 
