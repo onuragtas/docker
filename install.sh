@@ -1,5 +1,23 @@
 echo "Docker Installer"
 
+function getOS() {
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+            OS_TYPE="linux"
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+          OS_TYPE="osx"
+    fi
+
+}
+
+function getLocalIP() {
+  getOS
+  if [ "$OS_TYPE" == "linux" ]; then
+    LOCAL_IP=$(ip route get 1 | awk '{print $NF;exit}')
+  elif [ "$OS_TYPE" == "osx" ]; then
+    LOCAL_IP=$(ipconfig getifaddr en0)
+  fi
+}
+
 function escape_slashes {
     sed 's/\//\\\//g'
 }
@@ -16,36 +34,17 @@ function change_line {
 
 echo "127.0.0.1" > global/dockerip
 
-if command -v docker-machine &> /dev/null
-then
-    debug_ip=$(docker-machine ip)
+#if command -v docker-machine &> /dev/null
+#then
+getLocalIP
+    debug_ip=$LOCAL_IP
     cat_env=$(cat .env)
     cat_xdebug_host_env=$(cat .env | grep XDEBUG_HOST)
 
-    i=1
-    ip=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
-    for dockIp in $ip
-    do
-      newIp=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | sed -n "${i}p")
-      echo "$i $newIp"
-      i=$((i+1))
-    done
-
-    echo "select write number/write"
-
-    read -p "xdebug ip:" changeip
-    length=${#changeip}
-    if [ "$length" -lt 2 ]; then
-      newIp=$(ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p' | sed -n "${changeip}p")
-      ip=$newIp
-    else
-      ip=$changeip
-    fi
-    echo "XDebug ip is $ip"
-    echo "docker-machine default ip: $(docker-machine ip default)"
-    change_line "$cat_xdebug_host_env" "XDEBUG_HOST=$ip" .env
-    echo "$(docker-machine ip default)" > global/dockerip
-fi
+    echo "XDebug ip is $LOCAL_IP"
+    change_line "$cat_xdebug_host_env" "XDEBUG_HOST=$LOCAL_IP" .env
+    echo "$LOCAL_IP" > global/dockerip
+#fi
 
 outside=$(cat .env | grep OUTSIDE)
 outside="${outside//OUTSIDE_IP=/}"
