@@ -283,7 +283,7 @@ services:
       - ${REDIS_PORT}:6379
 
   db:
-    image: 'mysql:5.7'
+    image: 'mysql:8.0'
     container_name: db
     restart: always
     networks:
@@ -292,11 +292,11 @@ services:
     volumes:
       - './mysql/initdb/:/docker-entrypoint-initdb.d'
       - './mysql/data/:/var/lib/mysql'
+      - './etc/my.cnf:/etc/mysql/my.cnf'
     command: mysqld --sql_mode="NO_ENGINE_SUBSTITUTION"
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     ports:
       - ${MYSQL_PORT}:3306
