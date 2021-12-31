@@ -50,6 +50,10 @@ RUN  pecl install redis \
             opcache \
             mongodb
 
+
+RUN pecl install xdebug-2.9.8
+RUN docker-php-ext-enable xdebug
+
 RUN docker-php-ext-install bcmath
 
 RUN echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini
@@ -61,5 +65,16 @@ RUN apt-get update
 RUN apt-get -y install cron
 
 RUN apt-get install -y git
+
+ARG XDEBUG_HOST
+ARG XDEBUG_PORT
+
+RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
+   && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
+   echo "xdebug.remote_connect_back=${XDEBUG_REMOTE_CONNECT_BACK}" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
+   echo "xdebug.remote_handler = dbgp" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
+   echo "xdebug.remote_mode = req" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
+   echo "xdebug.remote_host=$XDEBUG_HOST" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini &&\
+   echo "xdebug.remote_port=$XDEBUG_PORT" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 CMD cron & php-fpm

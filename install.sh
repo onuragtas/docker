@@ -43,7 +43,7 @@ getLocalIP
 
     echo "XDebug ip is $LOCAL_IP"
     change_line "$cat_xdebug_host_env" "XDEBUG_HOST=$LOCAL_IP" .env
-    echo "$LOCAL_IP" > global/dockerip
+    #echo "$LOCAL_IP" > global/dockerip
 #fi
 
 outside=$(cat .env | grep OUTSIDE)

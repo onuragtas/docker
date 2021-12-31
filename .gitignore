@@ -1,4 +1,5 @@
 .idea/
+.idea/workspace.xml
 sites/*
 etc/nginx/*
 !etc/nginx/default*
