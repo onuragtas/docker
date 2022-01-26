@@ -491,6 +491,81 @@ services:
     networks:
       net:
 
+  php72_xdebug:
+      build:
+        context: ./php72_xdebug
+        args:
+          - XDEBUG_PORT=${XDEBUG_PORT}
+          - XDEBUG_HOST=${XDEBUG_HOST}
+          - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+      tty: true
+      container_name: php72_xdebug
+      restart: always
+      links:
+        - global
+      environment:
+        XDEBUG_PORT: ${XDEBUG_PORT}
+        XDEBUG_HOST: ${XDEBUG_HOST}
+        XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
+      expose:
+        - 9000
+      volumes:
+        - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+        - ./php72/php.ini:/usr/local/etc/php/php.ini
+        - ./global:/global
+      networks:
+        net:
+
+  php74_xdebug:
+      build:
+        context: ./php74_xdebug
+        args:
+          - XDEBUG_PORT=${XDEBUG_PORT}
+          - XDEBUG_HOST=${XDEBUG_HOST}
+          - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+      tty: true
+      container_name: php74_xdebug
+      restart: always
+      links:
+        - global
+      environment:
+        XDEBUG_PORT: ${XDEBUG_PORT}
+        XDEBUG_HOST: ${XDEBUG_HOST}
+        XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
+      expose:
+        - 9000
+      volumes:
+        - ./php74/php.ini:/usr/local/etc/php/php.ini
+        - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+        - ./global:/global
+      networks:
+        net:
+
+  php56_xdebug:
+      build:
+        context: ./php56_xdebug
+        args:
+          - XDEBUG_PORT=${XDEBUG_PORT}
+          - XDEBUG_HOST=${XDEBUG_HOST}
+          - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+      tty: true
+      container_name: php56_xdebug
+      restart: always
+      links:
+        - global
+      environment:
+        XDEBUG_PORT: ${XDEBUG_PORT}
+        XDEBUG_HOST: ${XDEBUG_HOST}
+        XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
+      expose:
+        - 9000
+      volumes:
+        - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+        - ./global:/global
+        - ./php56/php.ini:/usr/local/etc/php/php.ini
+      networks:
+        net:
+
 
 networks:
     net:
