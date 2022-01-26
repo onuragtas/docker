@@ -330,7 +330,6 @@ services:
       net:
         ipv4_address: ${APACHE_HOST}
     links:
-      - db
       - php56
       - php70
       - php71
@@ -353,7 +352,6 @@ services:
       net:
         ipv4_address: ${NGINX_HOST}
     links:
-      - 'db:db'
       - php56
       - php70
       - php71
