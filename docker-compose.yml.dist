@@ -334,6 +334,7 @@ services:
       - php70
       - php71
       - php72
+      - php74
       - php56_xdebug
       - php72_xdebug
       - php74_xdebug
@@ -356,6 +357,7 @@ services:
       - php70
       - php71
       - php72
+      - php74
       - php56_xdebug
       - php72_xdebug
       - php74_xdebug
