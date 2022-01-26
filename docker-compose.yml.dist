@@ -335,6 +335,9 @@ services:
       - php70
       - php71
       - php72
+      - php56_xdebug
+      - php72_xdebug
+      - php74_xdebug
     ports:
       - ${APACHE_PORT}:80
       - ${APACHE_PORT2}:443
@@ -355,6 +358,9 @@ services:
       - php70
       - php71
       - php72
+      - php56_xdebug
+      - php72_xdebug
+      - php74_xdebug
     ports:
       - ${NGINX_PORT}:80
       - ${NGINX_PORT2}:443
