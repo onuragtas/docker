@@ -9,7 +9,7 @@ RUN docker-php-ext-install mbstring curl zip mysqli pdo pdo_pgsql pdo_mysql soap
 
 
 RUN pecl install xdebug-2.7.0 redis-4.0.1 mongodb
-RUN docker-php-ext-enable redis xdebug mongodb
+RUN docker-php-ext-enable redis
 RUN apk del buildDeps
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
