@@ -33,6 +33,7 @@ function change_line {
 }
 
 echo "127.0.0.1" > $WORKDIR/global/dockerip
+echo "172.28.1.1" > $WORKDIR/global/ip
 
 #if command -v docker-machine &> /dev/null
 #then
