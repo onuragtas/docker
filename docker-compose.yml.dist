@@ -338,6 +338,7 @@ services:
       - php56_xdebug
       - php72_xdebug
       - php74_xdebug
+      - php72_xdebug_kurumsal
     ports:
       - ${APACHE_PORT}:80
       - ${APACHE_PORT2}:443
@@ -361,6 +362,7 @@ services:
       - php56_xdebug
       - php72_xdebug
       - php74_xdebug
+      - php72_xdebug_kurumsal
     ports:
       - ${NGINX_PORT}:80
       - ${NGINX_PORT2}:443
@@ -518,6 +520,31 @@ services:
       volumes:
         - ${PROJECT_DEFAULT_PATH}:/var/www/html/
         - ./php72/php.ini:/usr/local/etc/php/php.ini
+        - ./global:/global
+      networks:
+        net:
+
+  php72_xdebug_kurumsal:
+      build:
+        context: ./php72_xdebug_kurumsal
+        args:
+          - XDEBUG_PORT=${XDEBUG_PORT}
+          - XDEBUG_HOST=${XDEBUG_HOST}
+          - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+      tty: true
+      container_name: php72_xdebug_kurumsal
+      restart: always
+      links:
+        - global
+      environment:
+        XDEBUG_PORT: ${XDEBUG_PORT}
+        XDEBUG_HOST: ${XDEBUG_HOST}
+        XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
+      expose:
+        - 9000
+      volumes:
+        - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+        - ./php72_xdebug_kurumsal/php.ini:/usr/local/etc/php/php.ini
         - ./global:/global
       networks:
         net:
