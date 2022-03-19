@@ -14,7 +14,13 @@ function getLocalIP() {
   if [ "$OS_TYPE" == "linux" ]; then
     LOCAL_IP=$(ip route get 1 | awk '{print $NF;exit}')
   elif [ "$OS_TYPE" == "osx" ]; then
-    LOCAL_IP=$(ipconfig getifaddr en0)
+    for (( c=0; c<=10; c++ ))
+    do
+      LOCAL_IP=$(ipconfig getifaddr en${c})
+      if [ "$LOCAL_IP" != "" ]; then
+        break
+      fi
+    done
   fi
 }
 
