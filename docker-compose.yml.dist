@@ -609,6 +609,22 @@ services:
     volumes:
       - ./arangodb_data_container:/var/lib/arangodb3
       - ./arangodb_apps_data_container:/var/lib/arangodb3-apps
+  
+  ftpserver:
+    container_name: ftp
+    image: iradu/proftpd:latest
+    ports:
+      - "21:21"
+      - "20:20"
+      - "31200-31239:31200-31239"
+    volumes:
+      - ${PROJECT_DEFAULT_PATH}/html:/home/ftpusers/ftpuser
+    environment:
+      FTP_USER_NAME: ftpuser
+      FTP_USER_PASS: ftppass
+      FTP_MAX_CONNECTIONS: 20
+      FTP_MASQUERADEADDRESS: ${XDEBUG_HOST}
+      FTP_PASSIVE_PORTS: "31200 31239"
 
 
 networks:
