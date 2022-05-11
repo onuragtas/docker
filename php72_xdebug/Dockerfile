@@ -76,6 +76,8 @@ RUN apt-get update
 RUN apt-get -y install cron
 RUN apt-get install -y git
 
+RUN apt-get install --reinstall procps
+
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 

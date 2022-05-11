@@ -37,6 +37,8 @@ RUN touch /var/log/cron.log
 RUN apt-get update
 RUN apt-get -y --force-yes install cron
 
+RUN apt-get install --reinstall procps
+
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 RUN echo "zend_extension=xdebug.so" >> /usr/local/etc/php/conf.d/xdebug.ini

@@ -68,6 +68,9 @@ RUN docker-php-ext-install bcmath
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 RUN apt-get install -y git
+
+RUN apt-get install --reinstall procps
+
 RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
    echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
