@@ -29,7 +29,7 @@ RUN mkdir -p $COMPOSER_HOME \
 && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 && composer --version
 
-RUN apt-get install --reinstall procps
+RUN apt-get install -y --reinstall procps
 
 ADD crontab /etc/cron.d/hello-cron
 RUN chmod 0644 /etc/cron.d/hello-cron

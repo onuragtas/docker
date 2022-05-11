@@ -69,7 +69,7 @@ ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 RUN apt-get install -y git
 
-RUN apt-get install --reinstall procps
+RUN apt-get install -y --reinstall procps
 
 RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini &&\

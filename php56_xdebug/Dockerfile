@@ -37,7 +37,7 @@ RUN touch /var/log/cron.log
 RUN apt-get update
 RUN apt-get -y --force-yes install cron
 
-RUN apt-get install --reinstall procps
+RUN apt-get install -y --reinstall procps
 
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT

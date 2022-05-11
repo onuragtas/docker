@@ -74,7 +74,7 @@ RUN curl -sSL "https://codeload.github.com/phalcon/cphalcon/tar.gz/v${PHALCON_VE
     && cd ../../ \
     && rm -r cphalcon-${PHALCON_VERSION}
 
-RUN apt-get install --reinstall procps
+RUN apt-get install -y --reinstall procps
 
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT

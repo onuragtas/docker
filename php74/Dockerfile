@@ -61,7 +61,7 @@ RUN apt-get update
 RUN apt-get -y install cron
 
 RUN apt-get install -y git
-RUN apt-get install --reinstall procps
+RUN apt-get install -y --reinstall procps
 
 ENV PHALCON_VERSION=3.4.0
 RUN curl -sSL "https://codeload.github.com/phalcon/cphalcon/tar.gz/v${PHALCON_VERSION}" | tar -xz \
