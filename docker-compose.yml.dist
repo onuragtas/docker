@@ -346,6 +346,7 @@ services:
     volumes:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html
       - ${APACHE_SITES_ENABLED}:/etc/apache2/sites-enabled
+      - ./http/apache2.conf:/etc/apache2/apache2.conf
 
   nginx:
     build: ./nginx
