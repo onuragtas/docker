@@ -377,12 +377,7 @@ services:
 
 
   php72:
-    build:
-      context: ./php72
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
-        - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+    image: onuragtas/php7.2-fpm
     tty: true
     container_name: php72
     restart: always
@@ -402,12 +397,7 @@ services:
       net:
 
   php70:
-    build:
-      context: ./php70
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
-        - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+    image: onuragtas/php7.0-fpm
     tty: true
     container_name: php70
     restart: always
@@ -427,12 +417,7 @@ services:
       net:
 
   php74:
-    build:
-      context: ./php74
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
-        - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+    image: onuragtas/php7.4-fpm
     tty: true
     container_name: php74
     restart: always
@@ -452,12 +437,7 @@ services:
       net:
 
   php71:
-    build:
-      context: ./php71
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
-        - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+    image: onuragtas/php7.1-fpm
     tty: true
     container_name: php71
     restart: always
@@ -477,12 +457,7 @@ services:
       net:
 
   php56:
-    build:
-      context: ./php56
-      args:
-        - XDEBUG_PORT=${XDEBUG_PORT}
-        - XDEBUG_HOST=${XDEBUG_HOST}
-        - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+    image: onuragtas/php5.6-fpm
     tty: true
     container_name: php56
     restart: always
@@ -502,12 +477,7 @@ services:
       net:
 
   php72_xdebug:
-      build:
-        context: ./php72_xdebug
-        args:
-          - XDEBUG_PORT=${XDEBUG_PORT}
-          - XDEBUG_HOST=${XDEBUG_HOST}
-          - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+      image: onuragtas/php7.2-fpm-xdebug
       tty: true
       container_name: php72_xdebug
       restart: always
@@ -527,12 +497,7 @@ services:
         net:
 
   php72_xdebug_kurumsal:
-      build:
-        context: ./php72_xdebug_kurumsal
-        args:
-          - XDEBUG_PORT=${XDEBUG_PORT}
-          - XDEBUG_HOST=${XDEBUG_HOST}
-          - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+      image: onuragtas/php7.2-fpm-xdebug-kurumsal
       tty: true
       container_name: php72_xdebug_kurumsal
       restart: always
@@ -552,12 +517,7 @@ services:
         net:
 
   php74_xdebug:
-      build:
-        context: ./php74_xdebug
-        args:
-          - XDEBUG_PORT=${XDEBUG_PORT}
-          - XDEBUG_HOST=${XDEBUG_HOST}
-          - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+      image: onuragtas/php7.4-fpm-xdebug
       tty: true
       container_name: php74_xdebug
       restart: always
@@ -577,12 +537,7 @@ services:
         net:
 
   php56_xdebug:
-      build:
-        context: ./php56_xdebug
-        args:
-          - XDEBUG_PORT=${XDEBUG_PORT}
-          - XDEBUG_HOST=${XDEBUG_HOST}
-          - XDEBUG_REMOTE_CONNECT_BACK=${XDEBUG_REMOTE_CONNECT_BACK}
+      image: onuragtas/php5.6-fpm-xdebug
       tty: true
       container_name: php56_xdebug
       restart: always
