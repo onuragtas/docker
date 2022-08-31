@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbbb6c35-bdc5-4d61-a9dc-027d421aead4" name="Default Changelist" comment="phalcon added">
+    <list default="true" id="bbbb6c35-bdc5-4d61-a9dc-027d421aead4" name="Default Changelist" comment="image added to php services">
+      <change afterPath="$PROJECT_DIR$/php71_xdebug/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php71_xdebug/crontab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php71_xdebug/php.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/nginx/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/etc/nginx/default.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,9 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -22,40 +25,58 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpDebugGeneral" xdebug_debug_port="9001" break_at_first_line="true" />
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/etc/my.cnf" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/php56_xdebug/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/php70/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/php72_xdebug/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/php72_xdebug_kurumsal/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/php74_xdebug/Dockerfile" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpDebugGeneral" xdebug_debug_port="9001" break_at_first_line="true">
+    <xdebug_debug_ports port="9001" />
+    <xdebug_debug_ports port="9003" />
+  </component>
   <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://localhost" />
   <component name="ProjectId" id="1QWs17HmSAdVU9LDDHwyNHZOwEm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sites/html" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/onuragtas/docker&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ruby.rails.projectView.checked&quot;: &quot;true&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/etc/nginx" />
       <recent name="$PROJECT_DIR$/etc/nginx/back" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="php56/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
-          <option name="buildCliOptions" value="" />
           <option name="command" value="" />
           <option name="containerName" value="" />
           <option name="entrypoint" value="" />
-          <option name="imageTag" value="" />
           <option name="commandLineOptions" value="" />
           <option name="sourceFilePath" value="php56/Dockerfile" />
         </settings>
@@ -83,6 +104,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -105,6 +127,39 @@
       <workItem from="1598422515503" duration="2842000" />
       <workItem from="1598511692833" duration="4418000" />
       <workItem from="1598596671577" duration="1224000" />
+      <workItem from="1648794288165" duration="682000" />
+      <workItem from="1649348046387" duration="1132000" />
+      <workItem from="1649774825475" duration="1198000" />
+      <workItem from="1650194864692" duration="1192000" />
+      <workItem from="1651150546616" duration="3603000" />
+      <workItem from="1652254274489" duration="1674000" />
+      <workItem from="1653049856815" duration="600000" />
+      <workItem from="1653312155030" duration="1955000" />
+      <workItem from="1653820790182" duration="598000" />
+      <workItem from="1654070252050" duration="1844000" />
+      <workItem from="1654191951014" duration="598000" />
+      <workItem from="1654260428608" duration="1197000" />
+      <workItem from="1654336176550" duration="599000" />
+      <workItem from="1654419549381" duration="599000" />
+      <workItem from="1654459243944" duration="597000" />
+      <workItem from="1656657101856" duration="1291000" />
+      <workItem from="1659903533486" duration="591000" />
+      <workItem from="1660173012441" duration="598000" />
+      <workItem from="1660574936633" duration="1997000" />
+      <workItem from="1660596642787" duration="1314000" />
+      <workItem from="1660639471449" duration="597000" />
+      <workItem from="1660682239984" duration="591000" />
+      <workItem from="1660719883862" duration="592000" />
+      <workItem from="1660759256100" duration="596000" />
+      <workItem from="1660991559684" duration="1806000" />
+      <workItem from="1661087701884" duration="596000" />
+      <workItem from="1661148249322" duration="594000" />
+      <workItem from="1661238795714" duration="592000" />
+      <workItem from="1661416179169" duration="595000" />
+      <workItem from="1661511829506" duration="586000" />
+      <workItem from="1661528986329" duration="571000" />
+      <workItem from="1661690449745" duration="1782000" />
+      <workItem from="1661959067317" duration="2368000" />
     </task>
     <task id="LOCAL-00001" summary="phalcon added">
       <created>1598516362677</created>
@@ -120,60 +175,100 @@
       <option name="project" value="LOCAL" />
       <updated>1598516541583</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="dockerfiles changed">
+      <created>1649348302607</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649348302607</updated>
+    </task>
+    <task id="LOCAL-00004" summary="phalcon added">
+      <created>1651150670770</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1651150670770</updated>
+    </task>
+    <task id="LOCAL-00005" summary="phalcon added">
+      <created>1651150747556</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651150747556</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ps added to containers">
+      <created>1652254468843</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1652254468843</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ps added to containers">
+      <created>1652297420965</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652297420965</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changed">
+      <created>1653392325678</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653392325678</updated>
+    </task>
+    <task id="LOCAL-00009" summary="apache2 conf added">
+      <created>1660575055779</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1660575055779</updated>
+    </task>
+    <task id="LOCAL-00010" summary="apache2 conf added">
+      <created>1660575331746</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1660575331746</updated>
+    </task>
+    <task id="LOCAL-00011" summary="apache2 conf added">
+      <created>1660575734477</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1660575734477</updated>
+    </task>
+    <task id="LOCAL-00012" summary="image added to php services">
+      <created>1661691622051</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1661691622051</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="dockerfiles changed" />
     <MESSAGE value="phalcon added" />
-    <option name="LAST_COMMIT_MESSAGE" value="phalcon added" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1598604183438">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1598604183438" />
-    <state x="100" y="0" width="1240" height="900" key="DiffContextDialog" timestamp="1598604059813">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="100" y="0" width="1240" height="900" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1598604059813" />
-    <state x="100" y="66" width="1240" height="829" key="DiffContextDialog/0.23.1440.823@0.23.1440.823" timestamp="1598530266027" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/0.23.1440.827@0.23.1440.827" timestamp="1598367062224" />
-    <state x="100" y="84" width="1240" height="762" key="DiffContextDialog/0.23.1440.828@0.23.1440.828" timestamp="1598514680301" />
-    <state x="544" y="168" key="RollbackChangesDialog" timestamp="1598367004730">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="544" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1598367004730" />
-    <state x="320" y="178" key="Vcs.Push.Dialog.v2" timestamp="1598603676036">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="320" y="178" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1598603676036" />
-    <state x="378" y="212" width="683" height="476" key="find.popup" timestamp="1598530328624">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="378" y="212" width="683" height="476" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1598530328624" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1598530324235">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1598530324235" />
-    <state x="450" y="309" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1598525254577">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="450" y="309" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1440.900@0.0.1440.900" timestamp="1598525254577" />
+    <MESSAGE value="ps added to containers" />
+    <MESSAGE value="changed" />
+    <MESSAGE value="apache2 conf added" />
+    <MESSAGE value="image added to php services" />
+    <option name="LAST_COMMIT_MESSAGE" value="image added to php services" />
   </component>
 </project>

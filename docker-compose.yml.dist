@@ -476,6 +476,26 @@ services:
     networks:
       net:
 
+  php71_xdebug:
+    image: onuragtas/php7.1-fpm-xdebug
+    tty: true
+    container_name: php71_xdebug
+    restart: always
+    links:
+      - global
+    environment:
+      XDEBUG_PORT: ${XDEBUG_PORT}
+      XDEBUG_HOST: ${XDEBUG_HOST}
+      XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
+    expose:
+      - 9000
+    volumes:
+      - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+      - ./php72/php.ini:/usr/local/etc/php/php.ini
+      - ./global:/global
+    networks:
+      net:
+
   php72_xdebug:
       image: onuragtas/php7.2-fpm-xdebug
       tty: true
