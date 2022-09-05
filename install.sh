@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Docker Installer"
 WORKDIR=$(dirname "$0")
 function getOS() {
