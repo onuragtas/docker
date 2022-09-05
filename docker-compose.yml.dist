@@ -170,19 +170,19 @@ services:
       net:
         ipv4_address: ${ELASTICHQ_HOST}
 
-    redis-commander:
-      container_name: redis-commander
-      hostname: redis-commander
-      build: ./redis-commander
-      restart: always
-      environment:
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    build: ./redis-commander
+    restart: always
+    environment:
       - REDIS_HOST=172.28.1.4
       - REDIS_PASSWORD=redis
-      ports:
-      - "8081:80"
-      networks:
-        net:
-          ipv4_address: 172.28.1.9
+    ports:
+       "8081:80"
+    networks:
+      net:
+        ipv4_address: 172.28.1.9
 
   mongodb:
     image: mongo:4.2
