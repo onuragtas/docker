@@ -73,6 +73,8 @@ services:
     ports:
       - ${RABBITMQ_PORT}:15672
       - ${RABBITMQ_PORT2}:5672
+    volumes:
+      - ./rabbitmq_data:/var/lib/rabbitmq
     networks:
       net:
         ipv4_address: ${RABBITMQ_HOST}
@@ -132,6 +134,7 @@ services:
       - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
+      - ./etc/elasticsearch/jvm.options:/usr/share/elasticsearch/config/jvm.options
     networks:
       net:
         ipv4_address: ${ELASTICSEARCH_HOST}
