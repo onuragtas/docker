@@ -326,7 +326,6 @@ services:
 
   httpd:
     build: ./httpd
-    platform: linux/amd64
     container_name: httpd
     restart: always
     tty: true
