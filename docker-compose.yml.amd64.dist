@@ -322,8 +322,6 @@ services:
       - ./php72/php.ini:/usr/local/etc/php/php.ini
     ports:
       - ${PHPMYADMIN_PORT}:80
-    links:
-      - 'db:db'
 
   httpd:
     build: ./httpd
@@ -333,16 +331,6 @@ services:
     networks:
       net:
         ipv4_address: ${APACHE_HOST}
-    links:
-      - php56
-      - php70
-      - php71
-      - php72
-      - php74
-      - php56_xdebug
-      - php72_xdebug
-      - php74_xdebug
-      - php72_xdebug_kurumsal
     ports:
       - ${APACHE_PORT}:80
       - ${APACHE_PORT2}:443
@@ -358,16 +346,6 @@ services:
     networks:
       net:
         ipv4_address: ${NGINX_HOST}
-    links:
-      - php56
-      - php70
-      - php71
-      - php72
-      - php74
-      - php56_xdebug
-      - php72_xdebug
-      - php74_xdebug
-      - php72_xdebug_kurumsal
     ports:
       - ${NGINX_PORT}:80
       - ${NGINX_PORT2}:443
