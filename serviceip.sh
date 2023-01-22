@@ -10,8 +10,42 @@ while IFS= read -r line; do
 done <<< "$ips"
 echo "}" >> /docker/etc/nginx/docker_service_ip.conf
 
-docker restart nginx
-
 sleep 2
 
+localip=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
+nginxIp=$(cat global/ip)
+
 docker exec $2 sh -c "echo $2 > /root/username"
+docker exec $2 sh -c "echo $localip $2.payment.ept-dev.net >> /etc/hosts"
+docker exec $2 sh -c "echo $localip $2.epa-api.ept-dev.net >> /etc/hosts"
+docker exec $2 sh -c "echo $localip $2.fe.ept-dev.net >> /etc/hosts"
+
+
+checkHost=$(cat /etc/hosts |grep $2.payment.ept-dev.net |awk '{print $1}')
+if [ "$checkHost" == "" ]; then
+echo "127.0.0.1 $2.payment.ept-dev.net"
+echo "127.0.0.1 $2.payment.ept-dev.net" >> /etc/hosts
+docker exec php74 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /etc/hosts"
+docker exec php72 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /etc/hosts"
+docker exec php56 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /etc/hosts"
+fi
+
+checkHost=$(cat /etc/hosts |grep $2.epa-api.ept-dev.net |awk '{print $1}')
+if [ "$checkHost" == "" ]; then
+echo "127.0.0.1 $2.epa-api.ept-dev.net"
+echo "127.0.0.1 $2.epa-api.ept-dev.net" >> /etc/hosts
+docker exec php74 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /etc/hosts"
+docker exec php72 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /etc/hosts"
+docker exec php56 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /etc/hosts"
+fi
+
+checkHost=$(cat /etc/hosts |grep $2.fe.ept-dev.net |awk '{print $1}')
+if [ "$checkHost" == "" ]; then
+echo "127.0.0.1 $2.fe.ept-dev.net"
+echo "127.0.0.1 $2.fe.ept-dev.net" >> /etc/hosts
+docker exec php74 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /etc/hosts"
+docker exec php72 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /etc/hosts"
+docker exec php56 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /etc/hosts"
+fi
+
+docker restart global nginx
