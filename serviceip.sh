@@ -23,29 +23,26 @@ docker exec $2 sh -c "echo $localip $2.fe.ept-dev.net >> /etc/hosts"
 
 checkHost=$(cat /etc/hosts |grep $2.payment.ept-dev.net |awk '{print $1}')
 if [ "$checkHost" == "" ]; then
-echo "127.0.0.1 $2.payment.ept-dev.net"
 echo "127.0.0.1 $2.payment.ept-dev.net" >> /etc/hosts
-docker exec php74 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /etc/hosts"
-docker exec php72 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /etc/hosts"
-docker exec php56 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /etc/hosts"
+docker exec php74 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /global/hosts"
+docker exec php72 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /global/hosts"
+docker exec php56 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /global/hosts"
 fi
 
 checkHost=$(cat /etc/hosts |grep $2.epa-api.ept-dev.net |awk '{print $1}')
 if [ "$checkHost" == "" ]; then
-echo "127.0.0.1 $2.epa-api.ept-dev.net"
 echo "127.0.0.1 $2.epa-api.ept-dev.net" >> /etc/hosts
-docker exec php74 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /etc/hosts"
-docker exec php72 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /etc/hosts"
-docker exec php56 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /etc/hosts"
+docker exec php74 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /global/hosts"
+docker exec php72 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /global/hosts"
+docker exec php56 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /global/hosts"
 fi
 
 checkHost=$(cat /etc/hosts |grep $2.fe.ept-dev.net |awk '{print $1}')
 if [ "$checkHost" == "" ]; then
-echo "127.0.0.1 $2.fe.ept-dev.net"
 echo "127.0.0.1 $2.fe.ept-dev.net" >> /etc/hosts
-docker exec php74 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /etc/hosts"
-docker exec php72 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /etc/hosts"
-docker exec php56 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /etc/hosts"
+docker exec php74 bash -c "echo $nginxIp $2.payment.ept-dev.net >> /global/hosts"
+docker exec php72 bash -c "echo $nginxIp $2.epa-api.ept-dev.net >> /global/hosts"
+docker exec php56 bash -c "echo $nginxIp $2.fe.ept-dev.net >> /global/hosts"
 fi
 
 docker restart global nginx

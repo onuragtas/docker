@@ -1,6 +1,6 @@
-docker pull hakanbysal/devenv:latest
 ips=$(docker container inspect  $(docker ps --format '{{.Names}} {{.Image}}' |grep devenv |awk '{print $1}') --format '{{.Name}}' | sed 's#^/##')
 
+docker pull hakanbysal/devenv:latest
 while IFS= read -r username; do
    password_cmd=$(docker container inspect $username --format='{{index (index (.Config.Env)) 0 }}')
    IFS='='
