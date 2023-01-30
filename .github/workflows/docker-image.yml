@@ -16,7 +16,8 @@ jobs:
     - uses: docker/setup-buildx-action@v2
     - name: Build the php56
       working-directory: php56
-      run: pwd && docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ../.
+      run: |
+        pwd
 
     - uses: docker/setup-buildx-action@v2
     - name: Build the php70
