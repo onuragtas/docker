@@ -11,7 +11,7 @@ add_hosts() {
 mkdir /sites/$2/.hosts -p
 touch /sites/$2/.hosts/hosts
 
-docker run --privileged -p $1:22 --name="$2" -d -e "PASSWORD=$3" -v /sites/$2:/sites -v /sites/$2/.nvm:/root/.nvm -v /sites/$2/.hosts/hosts:/etc/hosts -v /docker/etc/nginx/$2:/usr/local/nginx --network lemp_net hakanbysal/devenv:latest
+docker run --privileged -p $1:22 --name="$2" -d -e "PASSWORD=$3" -v /sites/$2:/sites -v /sites/$2/.nvm:/root/.nvm -v /sites/$2/.hosts/hosts:/etc/hosts -v /docker/etc/nginx/$2:/usr/local/nginx -v /docker/httpd/sites-enabled/$2:/usr/local/httpd --network lemp_net hakanbysal/devenv:latest
 
 sleep 5
 
@@ -36,4 +36,7 @@ add_hosts $2 "hgs-api"
 add_hosts $2 "admin"
 add_hosts $2 "evo"
 
-docker restart global nginx
+docker exec -it nginx sh -c "nginx -s reload"
+docker exec -it httpd sh -c "apache2ctl restart"
+
+docker exec -it $2 sh -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash && . /root/.nvm/nvm.sh"
