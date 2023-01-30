@@ -1,0 +1,50 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the php56
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php56/.
+
+    - uses: actions/checkout@v3
+    - name: Build the php70
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php70/.
+
+    - uses: actions/checkout@v3
+    - name: Build the php71
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php71/.
+
+    - uses: actions/checkout@v3
+    - name: Build the php72
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php72/.
+
+    - uses: actions/checkout@v3
+    - name: Build the php74
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php74/.
+      
+    - uses: actions/checkout@v3
+    - name: Build the php56_xdebug
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php56_xdebug/.
+
+    - uses: actions/checkout@v3
+    - name: Build the php71_xdebug
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php71_xdebug/.
+
+    - uses: actions/checkout@v3
+    - name: Build the php72_xdebug
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php72_xdebug/.
+
+    - uses: actions/checkout@v3
+    - name: Build the php74_xdebug
+      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php74_xdebug/.
