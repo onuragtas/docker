@@ -18,19 +18,19 @@ docker run --privileged \
         -v /sites/$2:/sites \
         -v /sites/$2/.nvm:/root/.nvm \
         -v /sites/$2/.hosts/hosts:/etc/hosts \
-        -v /docker/etc/nginx/$2:/usr/local/nginx \
-        -v /docker/httpd/sites-enabled/$2:/usr/local/httpd \
+        -v /root/.docker-environment/etc/nginx/$2:/usr/local/nginx \
+        -v /root/.docker-environment/httpd/sites-enabled/$2:/usr/local/httpd \
         --network lemp_net hakanbysal/devenv:latest
 
 sleep 5
 
 ips=$(docker container inspect  $(docker ps --format '{{.Names}} {{.Image}}' |grep devenv |awk '{print $1}') --format '{{.Name}} {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' | sed 's#^/##')
-echo "" > /docker/etc/nginx/docker_service_ip.conf
-echo "map \$username \$serviceip {" >> /docker/etc/nginx/docker_service_ip.conf
+echo "" > /root/.docker-environment/etc/nginx/docker_service_ip.conf
+echo "map \$username \$serviceip {" >> /root/.docker-environment/etc/nginx/docker_service_ip.conf
 while IFS= read -r line; do
-   echo "$line;" >> /docker/etc/nginx/docker_service_ip.conf
+   echo "$line;" >> /root/.docker-environment/etc/nginx/docker_service_ip.conf
 done <<< "$ips"
-echo "}" >> /docker/etc/nginx/docker_service_ip.conf
+echo "}" >> /root/.docker-environment/etc/nginx/docker_service_ip.conf
 
 sleep 2
 

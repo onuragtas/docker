@@ -9,7 +9,7 @@ while IFS= read -r username; do
 
    port=$(docker container inspect $username --format '{{ (index (index .NetworkSettings.Ports "22/tcp") 0).HostPort }}')
    commands+=("docker rm $username -f")
-   commands+=("bash /docker/serviceip.sh $port $username $password")
+   commands+=("bash /root/.docker-environment/serviceip.sh $port $username $password")
 done <<< "$ips"
 
 docker pull hakanbysal/devenv:latest

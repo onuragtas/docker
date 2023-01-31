@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbbb6c35-bdc5-4d61-a9dc-027d421aead4" name="Default Changelist" comment="kafka added">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+    <list default="true" id="bbbb6c35-bdc5-4d61-a9dc-027d421aead4" name="Default Changelist" comment="graylog config changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,7 +190,7 @@
       <workItem from="1674723134754" duration="580000" />
       <workItem from="1675072820736" duration="591000" />
       <workItem from="1675107758983" duration="592000" />
-      <workItem from="1675120474631" duration="6976000" />
+      <workItem from="1675120474631" duration="8269000" />
     </task>
     <task id="LOCAL-00001" summary="phalcon added">
       <created>1598516362677</created>
@@ -319,7 +318,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675168417393</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="graylog config changed">
+      <created>1675170720732</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1675170720732</updated>
+    </task>
+    <task id="LOCAL-00020" summary="graylog config changed">
+      <created>1675171405729</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1675171405729</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +358,8 @@
     <MESSAGE value="image added to php services" />
     <MESSAGE value="update scripts" />
     <MESSAGE value="kafka added" />
-    <option name="LAST_COMMIT_MESSAGE" value="kafka added" />
+    <MESSAGE value="graylog config changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="graylog config changed" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
