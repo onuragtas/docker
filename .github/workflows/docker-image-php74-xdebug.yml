@@ -2,7 +2,6 @@ name: Docker Image CI PHP74_Xdebug
 
 on:
   push:
-    branches: [ "master" ]
     paths:
       - 'php74_xdebug/**'
   pull_request:
@@ -34,4 +33,4 @@ jobs:
         name: Setup buildx
       -
         name: Build the php74_xdebug
-        run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php7.4-fpm:latest --push ./php74_xdebug/.
+        run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php7.4-fpm-xdebug:latest --push ./php74_xdebug/.
