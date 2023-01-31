@@ -3,8 +3,12 @@ name: Docker Image PHP7.0 - FPM
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'php70/**'
   pull_request:
     branches: [ "master" ]
+    paths:
+      - 'php70/**'
 
 jobs:
 

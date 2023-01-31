@@ -3,8 +3,12 @@ name: Docker Image DEVENV
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'devenv/**'
   pull_request:
     branches: [ "master" ]
+    paths:
+      - 'devenv/**'
 
 jobs:
 

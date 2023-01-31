@@ -3,8 +3,12 @@ name: Docker Image PHP5.6 - FPM
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'php56/**'
   pull_request:
     branches: [ "master" ]
+    paths:
+      - 'php56/**'
 
 jobs:
 

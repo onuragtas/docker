@@ -3,8 +3,12 @@ name: Docker Image CI PHP72_Xdebug
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'php72_xdebug/**'
   pull_request:
     branches: [ "master" ]
+    paths:
+      - 'php72_xdebug/**'
 
 jobs:
 
