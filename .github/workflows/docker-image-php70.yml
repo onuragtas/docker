@@ -31,3 +31,4 @@ jobs:
       -
         name: Build the php70
         run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php7.0-fpm:latest --push ./php70/.
+
