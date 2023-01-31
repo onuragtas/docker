@@ -34,4 +34,4 @@ jobs:
         name: Setup buildx
       -
         name: Build the php56_xdebug
-        run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php56_xdebug/.
+        run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm-xdebug:latest --push ./php56_xdebug/.
