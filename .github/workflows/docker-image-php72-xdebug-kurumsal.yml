@@ -1,4 +1,4 @@
-name: Docker Image CI PHP72_Xdebug
+name: Docker Image CI PHP72_Xdebug_kurumsal
 
 on:
   push:
