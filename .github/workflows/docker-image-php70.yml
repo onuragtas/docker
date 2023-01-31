@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image PHP7.0 - FPM
 
 on:
   push:
