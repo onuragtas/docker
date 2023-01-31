@@ -20,7 +20,12 @@ jobs:
 
     - uses: docker/setup-buildx-action@v2
     - name: Build the php70
-      run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php5.6-fpm:latest --push ./php70/.
+    - with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            onuragtas/php7.0-fpm:latest
 
     - uses: docker/setup-buildx-action@v2
     - name: Build the php71
