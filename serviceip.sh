@@ -11,7 +11,16 @@ add_hosts() {
 mkdir /sites/$2/.hosts -p
 touch /sites/$2/.hosts/hosts
 
-docker run --privileged -p $1:22 --name="$2" -d -e "PASSWORD=$3" -v /sites/$2:/sites -v /sites/$2/.nvm:/root/.nvm -v /sites/$2/.hosts/hosts:/etc/hosts -v /docker/etc/nginx/$2:/usr/local/nginx -v /docker/httpd/sites-enabled/$2:/usr/local/httpd --network lemp_net hakanbysal/devenv:latest
+docker run --privileged \
+        -p $1:22 \
+        --name="$2" \
+        -d -e "PASSWORD=$3" \
+        -v /sites/$2:/sites \
+        -v /sites/$2/.nvm:/root/.nvm \
+        -v /sites/$2/.hosts/hosts:/etc/hosts \
+        -v /docker/etc/nginx/$2:/usr/local/nginx \
+        -v /docker/httpd/sites-enabled/$2:/usr/local/httpd \
+        --network lemp_net hakanbysal/devenv:latest
 
 sleep 5
 
