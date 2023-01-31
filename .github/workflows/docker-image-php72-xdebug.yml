@@ -34,4 +34,4 @@ jobs:
         name: Setup buildx
       -
         name: Build the php72_xdebug
-        run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php7.2-fpm:latest --push ./php72_xdebug/.
+        run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php7.2-fpm-xdebug:latest --push ./php72_xdebug/.
