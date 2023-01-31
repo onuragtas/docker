@@ -28,6 +28,9 @@ RUN apt-get update && apt-get install -y openssh-server \
 
 RUN apt-get update && apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y && apt-get install ca-certificates curl gnupg lsb-release && mkdir -p /etc/apt/keyrings && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && apt-get update && chmod a+r /etc/apt/keyrings/docker.gpg && apt-get update && apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y && apt-get install docker-compose -y && docker --version && docker-compose --version
 
+RUN mkdir /sites
+WORKDIR /sites
+
 RUN wget https://github.com/onuragtas/redock/releases/latest/download/redock_Linux_x86_64 -O /usr/local/redock
 RUN chmod +x /usr/local/redock
 RUN echo "/usr/local/redock --devenv" >> /usr/local/bin/redock
