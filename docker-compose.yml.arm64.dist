@@ -64,6 +64,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
+    hostname: 'dev-rabbitmq'
     container_name: rabbitmq
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
@@ -74,7 +75,7 @@ services:
       - ${RABBITMQ_PORT}:15672
       - ${RABBITMQ_PORT2}:5672
     volumes:
-      - ./rabbitmq_data:/var/lib/rabbitmq/mnesia
+      - ./rabbitmq_data:/var/lib/rabbitmq
     networks:
       net:
         ipv4_address: ${RABBITMQ_HOST}
