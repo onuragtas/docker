@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbbb6c35-bdc5-4d61-a9dc-027d421aead4" name="Default Changelist" comment="scripts updated">
+    <list default="true" id="bbbb6c35-bdc5-4d61-a9dc-027d421aead4" name="Default Changelist" comment="added hostname">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serviceip.sh" beforeDir="false" afterPath="$PROJECT_DIR$/serviceip.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +190,9 @@
       <workItem from="1674723134754" duration="580000" />
       <workItem from="1675072820736" duration="591000" />
       <workItem from="1675107758983" duration="592000" />
-      <workItem from="1675120474631" duration="8927000" />
+      <workItem from="1675120474631" duration="10130000" />
+      <workItem from="1675217062196" duration="1955000" />
+      <workItem from="1675289448738" duration="577000" />
     </task>
     <task id="LOCAL-00001" summary="phalcon added">
       <created>1598516362677</created>
@@ -340,7 +341,28 @@
       <option name="project" value="LOCAL" />
       <updated>1675172165693</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="git config added">
+      <created>1675173566555</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1675173566555</updated>
+    </task>
+    <task id="LOCAL-00023" summary="rabbitmq volume changed">
+      <created>1675275094334</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1675275094334</updated>
+    </task>
+    <task id="LOCAL-00024" summary="added hostname">
+      <created>1675275375473</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1675275375473</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +390,10 @@
     <MESSAGE value="kafka added" />
     <MESSAGE value="graylog config changed" />
     <MESSAGE value="scripts updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="scripts updated" />
+    <MESSAGE value="git config added" />
+    <MESSAGE value="rabbitmq volume changed" />
+    <MESSAGE value="added hostname" />
+    <option name="LAST_COMMIT_MESSAGE" value="added hostname" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
