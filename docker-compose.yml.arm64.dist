@@ -539,6 +539,26 @@ services:
       networks:
         net:
 
+  php81_xdebug:
+      image: hakanbaysal/php8.1-fpm-xdebug
+      tty: true
+      container_name: php81_xdebug
+      restart: always
+      links:
+        - global
+      environment:
+        XDEBUG_PORT: ${XDEBUG_PORT}
+        XDEBUG_HOST: ${XDEBUG_HOST}
+        XDEBUG_REMOTE_CONNECT_BACK: ${XDEBUG_REMOTE_CONNECT_BACK}
+      expose:
+        - 9000
+      volumes:
+        - ./php81_xdebug/php.ini:/usr/local/etc/php/php.ini
+        - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+        - ./global:/global
+      networks:
+        net:
+
   php56_xdebug:
       image: onuragtas/php5.6-fpm-xdebug
       tty: true
