@@ -24,12 +24,10 @@ RUN apt-get update && apt-get install -y openssh-server \
     nano \
     vim \
     screen \
-    wget
+    wget \
+    rsync
 
 RUN apt-get update && apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y && apt-get install ca-certificates curl gnupg lsb-release && mkdir -p /etc/apt/keyrings && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && apt-get update && chmod a+r /etc/apt/keyrings/docker.gpg && apt-get update && apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y && apt-get install docker-compose -y && docker --version && docker-compose --version
-
-RUN mkdir /sites
-WORKDIR /sites
 
 RUN wget https://github.com/onuragtas/redock/releases/latest/download/redock_Linux_x86_64 -O /usr/local/redock
 RUN chmod +x /usr/local/redock
@@ -39,6 +37,7 @@ RUN chmod +x /usr/local/bin/redock
 RUN wget https://gist.githubusercontent.com/onuragtas/c6dddddd6a8e6b8663f4f0043fec052a/raw/eedfc5500af08a04099ad4eb51b5142c996db7fc/go-compiler.sh -O /usr/local/bin/go-compiler.sh -F
 RUN chmod +x /usr/local/bin/go-compiler.sh
 
+RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php81 \$@" >> /usr/local/bin/php81_container && chmod +x /usr/local/bin/php81_container
 RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php74 \$@" >> /usr/local/bin/php74_container && chmod +x /usr/local/bin/php74_container
 RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php72 \$@" >> /usr/local/bin/php72_container && chmod +x /usr/local/bin/php72_container
 RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php56 \$@" >> /usr/local/bin/php56_container && chmod +x /usr/local/bin/php56_container
@@ -58,5 +57,8 @@ RUN . $HOME/.nvm/nvm.sh
 
 EXPOSE 22 80 443 8090 9000 9001 9002 9003 9004 9005 9006 9007 9008 9010
 
+RUN mkdir /sites
+WORKDIR /sites
+
 CMD ["/usr/sbin/sshd", "-D"]
-ENTRYPOINT echo "root:${PASSWORD}" | chpasswd && service ssh restart && bash && dockerd
+ENTRYPOINT echo "root:${PASSWORD}" | chpasswd && service ssh restart && cd /sites && bash && dockerd
