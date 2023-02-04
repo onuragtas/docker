@@ -12,7 +12,7 @@ while IFS= read -r username; do
    commands+=("bash /root/.docker-environment/serviceip.sh $port $username $password")
 done <<< "$ips"
 
-docker pull hakanbysal/devenv:latest
+docker pull hakanbaysal/devenv:latest
 
 for command in "${commands[@]}"
 do

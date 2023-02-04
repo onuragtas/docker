@@ -21,7 +21,7 @@ docker run --privileged \
         -v /sites/$2/.configs/gitconfig:/root/.gitconfig \
         -v /root/.docker-environment/etc/nginx/$2:/usr/local/nginx \
         -v /root/.docker-environment/httpd/sites-enabled/$2:/usr/local/httpd \
-        --network lemp_net hakanbysal/devenv:latest
+        --network lemp_net hakanbaysal/devenv:latest
 
 sleep 5
 
