@@ -539,7 +539,7 @@ services:
         net:
 
   php81_xdebug:
-      image: hakanbysal/php8.1-fpm-xdebug
+      image: hakanbaysal/php8.1-fpm-xdebug
       tty: true
       container_name: php81_xdebug
       restart: always

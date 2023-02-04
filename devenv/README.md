@@ -7,7 +7,7 @@ You can use openssh-server, Docker, Go, PHP 7.4, Java, JDK, Nginx, Node.js, Git,
 ## How to use
 
 ```bash
-docker pull hakanbysal/devenv:latest
+docker pull hakanbaysal/devenv:latest
 ```
 
 ```bash
@@ -17,5 +17,5 @@ docker run -d \
   -p 23:22 \
   -e "PASSWORD=password" \
   -v /sites/hakanbaysal:/sites \
-  hakanbysal/devenv:latest
+  hakanbaysal/devenv:latest
 ```

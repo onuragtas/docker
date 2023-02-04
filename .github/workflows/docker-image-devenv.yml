@@ -34,4 +34,4 @@ jobs:
         name: Setup buildx
       -
         name: Build the devenv
-        run:  docker buildx build --platform linux/amd64,linux/arm64 -t hakanbysal/devenv:latest --push ./devenv/.
+        run:  docker buildx build --platform linux/amd64,linux/arm64 -t hakanbaysal/devenv:latest --push ./devenv/.
