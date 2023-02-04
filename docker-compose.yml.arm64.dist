@@ -75,7 +75,7 @@ services:
       - ${RABBITMQ_PORT}:15672
       - ${RABBITMQ_PORT2}:5672
     volumes:
-      - ./rabbitmq_data:/var/lib/rabbitmq
+      - ./rabbitmq_data:/var/lib/rabbitmq/mnesia
     networks:
       net:
         ipv4_address: ${RABBITMQ_HOST}
