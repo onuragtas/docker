@@ -34,4 +34,4 @@ jobs:
         name: Setup buildx
       -
         name: Build the php81_xdebug
-        run: docker buildx build --platform linux/amd64,linux/arm64 -t hakanbaysal/php8.1-fpm-xdebug:latest --push ./php81_xdebug/.
+        run: docker buildx build --platform linux/amd64,linux/arm64 -t hakanbysal/php8.1-fpm-xdebug:latest --push ./php81_xdebug/.
