@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.1.11RC1-fpm
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
@@ -18,9 +18,11 @@ RUN apt-get update \
         libmemcached-dev \
         freetds-dev \
         libyaml-dev \
-	libssl-dev \
-	openssl \
-	libcurl4-gnutls-dev
+        libpq-dev \
+        libssl-dev \
+        openssl \
+        libcurl4-gnutls-dev \
+        librabbitmq-dev
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 && composer --version
@@ -30,8 +32,9 @@ RUN  pecl install redis \
     && pecl install memcached \
     && pecl install mongodb \
     && pecl install yaml \
+    && pecl install amqp \
     && docker-php-ext-install \
-	    curl \
+	        curl \
             iconv \
             mbstring \
             intl \
@@ -39,6 +42,7 @@ RUN  pecl install redis \
             exif \
             mysqli \
             pdo_mysql \
+            pdo_pgsql \
             soap \
             sockets \
             zip \
@@ -48,10 +52,11 @@ RUN  pecl install redis \
             redis \
             memcached \
             opcache \
-            mongodb
+            mongodb \
+            amqp
 
 
-RUN pecl install xdebug-3.1.5
+RUN pecl install xdebug-3.2.0alpha3
 RUN docker-php-ext-enable xdebug
 
 RUN docker-php-ext-install bcmath
