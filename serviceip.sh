@@ -11,8 +11,6 @@ add_hosts() {
 mkdir /sites/$2/.hosts -p
 touch /sites/$2/.hosts/hosts
 
-echo " " > /sites/$2/.configs/git-credentials
-
 docker run --privileged \
         -p $1:22 \
         --name="$2" \
