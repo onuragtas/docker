@@ -11,8 +11,6 @@ add_hosts() {
 mkdir /sites/$2/.hosts -p
 touch /sites/$2/.hosts/hosts
 
-echo " " >> /sites/$2/.configs/gitconfig
-
 docker run --privileged \
         -p $1:22 \
         --name="$2" \
@@ -20,7 +18,6 @@ docker run --privileged \
         -v /sites/$2:/sites \
         -v /sites/$2/.nvm:/root/.nvm \
         -v /sites/$2/.hosts/hosts:/etc/hosts \
-        -v /sites/$2/.configs/gitconfig:/root/.gitconfig \
         -v /root/.docker-environment/etc/nginx/$2:/usr/local/nginx \
         -v /root/.docker-environment/httpd/sites-enabled/$2:/usr/local/httpd \
         --network lemp_net hakanbaysal/devenv:latest
