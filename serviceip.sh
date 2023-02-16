@@ -18,7 +18,7 @@ docker run --privileged \
         -v /sites/$2:/sites \
         -v /sites/$2/.nvm:/root/.nvm \
         -v /sites/$2/.hosts/hosts:/etc/hosts \
-        -v /sites/$2/.configs/git-credentials:/root/.git-credentials \
+        -v /sites/$2/.configs:/root/.configs \
         -v /root/.docker-environment/etc/nginx/$2:/usr/local/nginx \
         -v /root/.docker-environment/httpd/sites-enabled/$2:/usr/local/httpd \
         --network lemp_net hakanbaysal/devenv:latest
@@ -38,7 +38,7 @@ sleep 2
 docker exec $2 sh -c "echo $2 > /root/.username"
 
 docker exec $2 sh -c "echo '[credential]
-	helper = store' > /root/.gitconfig"
+	helper = store --file /root/.configs/.git-credential' > /root/.gitconfig"
 
 add_hosts $2 "epa-api"
 add_hosts $2 "payment"
