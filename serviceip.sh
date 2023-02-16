@@ -11,7 +11,7 @@ add_hosts() {
 mkdir /sites/$2/.hosts -p
 touch /sites/$2/.hosts/hosts
 
-echo " " >> /sites/$2/.configs/git-credentials
+echo " " > /sites/$2/.configs/git-credentials
 
 docker run --privileged \
         -p $1:22 \
@@ -40,7 +40,7 @@ sleep 2
 docker exec $2 sh -c "echo $2 > /root/.username"
 
 docker exec $2 sh -c "echo '[credential]
-	helper = store' >> /root/.gitconfig"
+	helper = store' > /root/.gitconfig"
 
 add_hosts $2 "epa-api"
 add_hosts $2 "payment"
