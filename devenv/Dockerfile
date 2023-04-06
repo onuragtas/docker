@@ -37,10 +37,10 @@ RUN chmod +x /usr/local/bin/redock
 RUN wget https://gist.githubusercontent.com/onuragtas/c6dddddd6a8e6b8663f4f0043fec052a/raw/eedfc5500af08a04099ad4eb51b5142c996db7fc/go-compiler.sh -O /usr/local/bin/go-compiler.sh -F
 RUN chmod +x /usr/local/bin/go-compiler.sh
 
-RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php81 \$@" >> /usr/local/bin/php81_container && chmod +x /usr/local/bin/php81_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php74 \$@" >> /usr/local/bin/php74_container && chmod +x /usr/local/bin/php74_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php72 \$@" >> /usr/local/bin/php72_container && chmod +x /usr/local/bin/php72_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php56 \$@" >> /usr/local/bin/php56_container && chmod +x /usr/local/bin/php56_container
+RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php81_xdebug \$@" >> /usr/local/bin/php81_container && chmod +x /usr/local/bin/php81_container
+RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php74_xdebug \$@" >> /usr/local/bin/php74_container && chmod +x /usr/local/bin/php74_container
+RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php72_xdebug \$@" >> /usr/local/bin/php72_container && chmod +x /usr/local/bin/php72_container
+RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php56_xdebug \$@" >> /usr/local/bin/php56_container && chmod +x /usr/local/bin/php56_container
 RUN echo "docker -H 192.168.36.240:4243 exec -it postgres \$@" >> /usr/local/bin/postgres_container && chmod +x /usr/local/bin/postgres_container
 RUN echo "docker -H 192.168.36.240:4243 exec -it mongo \$@" >> /usr/local/bin/mongo_container && chmod +x /usr/local/bin/mongo_container
 RUN echo "docker -H 192.168.36.240:4243 exec -it db \$@" >> /usr/local/bin/mysql_container && chmod +x /usr/local/bin/mysql_container
