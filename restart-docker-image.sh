@@ -1,4 +1,4 @@
-ips=$(docker container inspect  $(docker ps --format '{{.Names}} {{.Image}}' |grep devenv |awk '{print $1}') --format '{{.Name}}' | sed 's#^/##')
+ips=$(docker container inspect  $(docker ps -a --format '{{.Names}} {{.Image}}' |grep devenv |awk '{print $1}') --format '{{.Name}}' | sed 's#^/##')
 
 commands=()
 while IFS= read -r username; do
