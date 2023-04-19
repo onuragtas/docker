@@ -654,6 +654,19 @@ services:
     networks:
       net:
 
+  sonarqube:
+    image: sonarqube
+    container_name: sonarqube
+    ports:
+      - ${SONARQUBE_PORT}:9000
+    restart: always
+    volumes:
+      - sonar_data:/opt/sonarqube/data
+      - sonar_logs:/opt/sonarqube/logs
+      - sonar_extensions:/opt/sonarqube/extensions
+    networks:
+      net:
+
 
 networks:
     net:
@@ -662,6 +675,9 @@ networks:
         config:
           - subnet: 172.28.0.0/16
 volumes:
+  sonar_data:
+  sonar_logs:
+  sonar_extensions:
   kafka-jmx-volume:
   grafana-volume:
   prometheus-volume:
