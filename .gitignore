@@ -22,3 +22,4 @@ elastic_graylog_data/*
 elasticsearch_data/*
 arangodb_data_container/*
 arangodb_apps_data_container/*
+.idea/workspace.xml
