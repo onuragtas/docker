@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:latest
 LABEL maintainer="Sinan Turgut <mail@sinanturgut.com.tr>"
 
 RUN apt-get update && apt-get install -y --force-yes nano unzip wget curl
