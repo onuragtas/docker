@@ -84,13 +84,11 @@ RUN apt-get install -y --reinstall procps
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 
-RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
-   && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
-   echo "xdebug.remote_connect_back=${XDEBUG_REMOTE_CONNECT_BACK}" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
-   echo "xdebug.remote_handler = dbgp" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
-   echo "xdebug.remote_mode = req" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
-   echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
+RUN echo "zend_extension=xdebug.so" >> /usr/local/etc/php/conf.d/xdebug.ini
+RUN echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
    echo "xdebug.client_host=$XDEBUG_HOST" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
-   echo "xdebug.client_port=$XDEBUG_PORT" >> /usr/local/etc/php/conf.d/xdebug.ini
+   echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
+   echo "xdebug.client_port=$XDEBUG_PORT" >> /usr/local/etc/php/conf.d/xdebug.ini &&\
+   echo "xdebug.discover_client_host=true" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 CMD cron & php-fpm
