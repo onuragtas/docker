@@ -65,5 +65,4 @@ RUN mkdir /sites
 WORKDIR /sites
 
 CMD ["/usr/sbin/sshd", "-D"]
-CMD ["cron"]
-ENTRYPOINT echo "root:${PASSWORD}" | chpasswd && service ssh restart && cd /sites && bash && dockerd
+ENTRYPOINT echo "root:${PASSWORD}" | chpasswd && service ssh restart && cron && cd /sites && bash && dockerd
