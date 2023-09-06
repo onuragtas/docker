@@ -53,7 +53,7 @@ docker exec $2 sh -c "echo $2 > /root/.username"
 docker exec $2 sh -c "echo '[credential]
 	helper = store --file /root/.configs/.git-credential' > /root/.gitconfig"
 
-add_cron $2 "/etc/cron.d"
+add_cron $2 "/sites/$2/cron.d"
 
 add_hosts $2 "epa-api"
 add_hosts $2 "payment"
