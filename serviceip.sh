@@ -7,6 +7,17 @@ add_hosts() {
   echo "$localip $1.$2.ept-dev.net" >> /sites/$1/.hosts/hosts
   fi
 }
+add_cron () {
+    shopt -s nullglob dotglob
+
+    for pathname in "$2"/*; do
+        if [ -d "$pathname" ]; then
+            walk_dir "$pathname"
+        else
+            docker exec $1 sh -c "crontab $pathname"
+        fi
+    done
+}
 
 mkdir /sites/$2/.hosts -p
 touch /sites/$2/.hosts/hosts
@@ -41,6 +52,8 @@ docker exec $2 sh -c "echo $2 > /root/.username"
 
 docker exec $2 sh -c "echo '[credential]
 	helper = store --file /root/.configs/.git-credential' > /root/.gitconfig"
+
+add_cron $2 "/etc/cron.d"
 
 add_hosts $2 "epa-api"
 add_hosts $2 "payment"
