@@ -14,7 +14,8 @@ add_cron () {
         if [ -d "$pathname" ]; then
             walk_dir "$pathname"
         else
-            docker exec $1 sh -c "crontab $pathname"
+            pathReplace=$(echo $pathname | sed "s/\/$1//g")
+            docker exec $1 sh -c "crontab $pathReplace"
         fi
     done
 }
