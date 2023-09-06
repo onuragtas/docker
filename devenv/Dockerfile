@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install apt-transport-https ca-certificates curl g
 RUN wget https://gist.githubusercontent.com/onuragtas/74f8351c4496598badbd9399814a44a5/raw/ci.sh -O /usr/local/bin/ci.sh
 RUN chmod +x /usr/local/bin/ci.sh
 
-RUN wget https://github.com/onuragtas/redock/releases/latest/download/redock_Linux_x86_64 -O /usr/local/redock
+RUN wget https://github.com/onuragtas/redock/releases/latest/download/redock_Linux_amd64 -O /usr/local/redock
 RUN chmod +x /usr/local/redock
 RUN echo "/usr/local/redock --devenv" >> /usr/local/bin/redock
 RUN chmod +x /usr/local/bin/redock
