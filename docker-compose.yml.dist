@@ -62,7 +62,7 @@ services:
       net:
 
   rabbitmq:
-    image: rabbitmq:3.6.6
+    image: rabbitmq:3.6.6-management
     restart: always
     hostname: 'dev-rabbitmq'
     container_name: rabbitmq
