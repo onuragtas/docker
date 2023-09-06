@@ -10,6 +10,7 @@ add_hosts() {
 
 mkdir /sites/$2/.hosts -p
 touch /sites/$2/.hosts/hosts
+mkdir /sites/$2/cron.d
 
 docker run --privileged \
         -p $1:22 \
@@ -17,7 +18,7 @@ docker run --privileged \
         -d -e "PASSWORD=$3" \
         -v /sites/$2:/sites \
         -v /sites/$2/.nvm:/root/.nvm \
-        -v /sites/$2/crontab:/etc/crontab \
+        -v /sites/$2/cron.d:/etc/cron.d \
         -v /sites/$2/.hosts/hosts:/etc/hosts \
         -v /sites/$2/.configs:/root/.configs \
         -v /root/.docker-environment/etc/nginx/$2:/usr/local/nginx \
