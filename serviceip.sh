@@ -17,6 +17,7 @@ docker run --privileged \
         -d -e "PASSWORD=$3" \
         -v /sites/$2:/sites \
         -v /sites/$2/.nvm:/root/.nvm \
+        -v /sites/$2/crontab:/etc/crontab \
         -v /sites/$2/.hosts/hosts:/etc/hosts \
         -v /sites/$2/.configs:/root/.configs \
         -v /root/.docker-environment/etc/nginx/$2:/usr/local/nginx \
