@@ -23,6 +23,7 @@ add_cron () {
 mkdir /sites/$2/.hosts -p
 touch /sites/$2/.hosts/hosts
 mkdir /sites/$2/cron.d
+touch /sites/$2/cron.d/cronlist
 
 docker run --privileged \
         -p $1:22 \
