@@ -61,8 +61,9 @@ RUN . $HOME/.nvm/nvm.sh
 
 RUN wget https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer -O /usr/local/bin/rvm-installer
 RUN chmod +x /usr/local/bin/rvm-installer
-RUN /usr/local/rvm/bin/rvm install 2.2.10
+RUN /usr/local/bin/rvm-installer
 RUN [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"
+RUN /usr/local/rvm/bin/rvm install 2.2.10
 
 EXPOSE 22 80 443 8090 9000 9001 9002 9003 9004 9005 9006 9007 9008 9010
 
