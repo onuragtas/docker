@@ -63,9 +63,9 @@ RUN . $HOME/.nvm/nvm.sh
 #RUN curl -sSL get.rvm.io | bash -s stable --ruby
 #RUN echo '[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm" # Load RVM function' >> ~/.bashrc
 #
-RUN rvm install 2.2.0
-RUN rvm --default use 2.2.0
-RUN ruby -v
+#RUN rvm install 2.2.0
+#RUN rvm --default use 2.2.0
+#RUN ruby -v
 
 EXPOSE 22 80 443 8090 9000 9001 9002 9003 9004 9005 9006 9007 9008 9010
 
