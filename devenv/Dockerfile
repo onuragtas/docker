@@ -63,7 +63,7 @@ RUN wget https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rv
 RUN chmod +x /usr/local/bin/rvm-installer
 RUN /usr/local/bin/rvm-installer
 RUN #source /usr/local/rvm/scripts/rvm
-RUN /usr/local/rvm/bin/rvm install 2.2.10
+RUN /usr/local/rvm/bin/rvm install 3.2.2
 
 EXPOSE 22 80 443 8090 9000 9001 9002 9003 9004 9005 9006 9007 9008 9010
 
