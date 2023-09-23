@@ -59,13 +59,10 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
 RUN export NVM_DIR="$HOME/.nvm"
 RUN . $HOME/.nvm/nvm.sh
 
-#RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-#RUN curl -sSL get.rvm.io | bash -s stable --ruby
-#RUN echo '[[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm" # Load RVM function' >> ~/.bashrc
-#
-#RUN rvm install 2.2.0
-#RUN rvm --default use 2.2.0
-#RUN ruby -v
+RUN wget https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer -O /usr/local/bin/rvm-installer
+RUN chmod +x /usr/local/bin/rvm-installer
+RUN /usr/local/rvm/bin/rvm install 2.2.10
+RUN [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm"
 
 EXPOSE 22 80 443 8090 9000 9001 9002 9003 9004 9005 9006 9007 9008 9010
 
