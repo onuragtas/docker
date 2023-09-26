@@ -290,7 +290,7 @@ services:
       - ${REDIS_PORT}:6379
 
   db:
-    image: 'mysql:8.0'
+    image: 'mysql:8.0.34'
     container_name: db
     restart: always
     networks:
