@@ -77,8 +77,8 @@ services:
       - ${RABBITMQ_PORT2}:5672
     volumes:
       - ./rabbitmq_data:/var/lib/rabbitmq/mnesia
-      - ./rabbitmq_enabled_plugins:/etc/rabbitmq/enabled_plugins
-      - ./rabbitmq_plugins:/usr/lib/rabbitmq/plugins
+      #- ./rabbitmq_enabled_plugins:/etc/rabbitmq/enabled_plugins
+      #- ./rabbitmq_plugins:/usr/lib/rabbitmq/plugins
     networks:
       net:
         ipv4_address: ${RABBITMQ_HOST}
