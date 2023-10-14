@@ -62,11 +62,11 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
 RUN export NVM_DIR="$HOME/.nvm"
 RUN . $HOME/.nvm/nvm.sh
 
-RUN wget https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer -O /usr/local/bin/rvm-installer
-RUN chmod +x /usr/local/bin/rvm-installer
-RUN /usr/local/bin/rvm-installer
-RUN #source /etc/profile.d/rvm.sh
-RUN /usr/local/rvm/bin/rvm install 3.2.2
+#RUN wget https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer -O /usr/local/bin/rvm-installer
+#RUN chmod +x /usr/local/bin/rvm-installer
+#RUN /usr/local/bin/rvm-installer
+#RUN #source /etc/profile.d/rvm.sh
+#RUN /usr/local/rvm/bin/rvm install 3.2.2
 
 EXPOSE 22 80 443 8090 9000 9001 9002 9003 9004 9005 9006 9007 9008 9010
 
