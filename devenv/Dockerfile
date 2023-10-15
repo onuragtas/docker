@@ -75,4 +75,3 @@ WORKDIR /sites
 
 CMD ["/usr/sbin/sshd", "-D"]
 ENTRYPOINT echo "root:${PASSWORD}" | chpasswd && service ssh restart && cron && cd /sites && bash && dockerd
-
