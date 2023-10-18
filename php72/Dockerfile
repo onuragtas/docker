@@ -30,6 +30,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
     && pecl install memcached-3.0.0 \
     && pecl install mongodb \
     && pecl install yaml \
+    && pecl install grpc \
     && docker-php-ext-install \
 	    curl \
             iconv \
