@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y --force-yes nano unzip wget curl
 
 RUN apt-get update && apt-get install -y --force-yes apache2 && apt-get clean
 
-RUN a2enmod proxy_http && a2enmod rewrite && a2enmod proxy_fcgi && a2enmod headers
+RUN a2enmod proxy_http && a2enmod rewrite && a2enmod proxy_fcgi && a2enmod headers && a2enmod vhost_alias
 
 
 EXPOSE 80
