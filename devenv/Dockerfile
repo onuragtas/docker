@@ -48,14 +48,14 @@ RUN chmod +x /usr/local/bin/go-compiler.sh
 RUN wget https://github.com/onuragtas/deployment/releases/latest/download/deployment_linux_amd64 -O /usr/local/bin/deployment
 RUN chmod +x /usr/local/bin/deployment
 
-RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php81_xdebug \$@" >> /usr/local/bin/php81_container && chmod +x /usr/local/bin/php81_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php74_xdebug \$@" >> /usr/local/bin/php74_container && chmod +x /usr/local/bin/php74_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php72_xdebug \$@" >> /usr/local/bin/php72_container && chmod +x /usr/local/bin/php72_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php56_xdebug \$@" >> /usr/local/bin/php56_container && chmod +x /usr/local/bin/php56_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it postgres \$@" >> /usr/local/bin/postgres_container && chmod +x /usr/local/bin/postgres_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it mongo \$@" >> /usr/local/bin/mongo_container && chmod +x /usr/local/bin/mongo_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it db \$@" >> /usr/local/bin/mysql_container && chmod +x /usr/local/bin/mysql_container
-RUN echo "docker -H 192.168.36.240:4243 exec -it nginx \$@" >> /usr/local/bin/nginx_container && chmod +x /usr/local/bin/nginx_container
+RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php81_xdebug \$@" >> /usr/local/bin/php81_container && chmod +x /usr/local/bin/php81_container
+RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php74_xdebug \$@" >> /usr/local/bin/php74_container && chmod +x /usr/local/bin/php74_container
+RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php72_xdebug \$@" >> /usr/local/bin/php72_container && chmod +x /usr/local/bin/php72_container
+RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php56_xdebug \$@" >> /usr/local/bin/php56_container && chmod +x /usr/local/bin/php56_container
+RUN echo "docker -H 192.168.36.240:4243 exec postgres \$@" >> /usr/local/bin/postgres_container && chmod +x /usr/local/bin/postgres_container
+RUN echo "docker -H 192.168.36.240:4243 exec mongo \$@" >> /usr/local/bin/mongo_container && chmod +x /usr/local/bin/mongo_container
+RUN echo "docker -H 192.168.36.240:4243 exec db \$@" >> /usr/local/bin/mysql_container && chmod +x /usr/local/bin/mysql_container
+RUN echo "docker -H 192.168.36.240:4243 exec nginx \$@" >> /usr/local/bin/nginx_container && chmod +x /usr/local/bin/nginx_container
 
 ENV PASSWORD=password
 
