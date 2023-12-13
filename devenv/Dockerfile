@@ -10,7 +10,6 @@ RUN apt-get update && apt-get install -y openssh-server \
     curl \
     gnupg-agent \
     software-properties-common \
-    golang-go \
     default-jdk \
     nginx \
     nodejs \
@@ -47,6 +46,10 @@ RUN chmod +x /usr/local/bin/go-compiler.sh
 
 RUN wget https://github.com/onuragtas/deployment/releases/latest/download/deployment_linux_amd64 -O /usr/local/bin/deployment
 RUN chmod +x /usr/local/bin/deployment
+
+RUN wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz -O /usr/local/go.linux-amd64.tar.gz
+RUN tar -vxf /usr/local/go.linux-amd64.tar.gz -C /usr/local/
+RUN ln -s /usr/local/go/bin/go /usr/local/bin/go
 
 RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php81_xdebug \$@" >> /usr/local/bin/php81_container && chmod +x /usr/local/bin/php81_container
 RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php74_xdebug \$@" >> /usr/local/bin/php74_container && chmod +x /usr/local/bin/php74_container
