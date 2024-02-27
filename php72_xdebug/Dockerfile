@@ -2,6 +2,7 @@ FROM php:7.2-fpm
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
+     	libssh2-1-dev \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
@@ -56,6 +57,9 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 
 RUN pecl install xdebug-2.9.8
 RUN docker-php-ext-enable xdebug
+
+RUN pecl install ssh2-1.3.1 \
+    && docker-php-ext-enable ssh2
 
 RUN docker-php-ext-install bcmath
 
