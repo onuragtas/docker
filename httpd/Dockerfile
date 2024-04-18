@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
 LABEL maintainer="Sinan Turgut <mail@sinanturgut.com.tr>"
 
 RUN apt-get update && apt-get install -y --force-yes nano unzip wget curl
