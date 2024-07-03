@@ -11,6 +11,8 @@ RUN apk del buildDeps
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 && composer --version
 
+RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Istanbul /etc/localtime
+
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 

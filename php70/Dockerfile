@@ -8,5 +8,7 @@ RUN docker-php-ext-install mbstring curl zip mysqli pdo pdo_pgsql pdo_mysql soap
 RUN pecl install redis-4.0.1 mongodb
 RUN apk del buildDeps
 
+RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Istanbul /etc/localtime
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 && composer --version

@@ -39,6 +39,8 @@ RUN apt-get -y --force-yes install cron
 
 RUN apt-get install -y --reinstall procps
 
+RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Istanbul /etc/localtime
+
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 RUN echo "zend_extension=xdebug.so" >> /usr/local/etc/php/conf.d/xdebug.ini

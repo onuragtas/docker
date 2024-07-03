@@ -31,6 +31,8 @@ RUN mkdir -p $COMPOSER_HOME \
 
 RUN apt-get install -y --reinstall procps
 
+RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Istanbul /etc/localtime
+
 ADD crontab /etc/cron.d/hello-cron
 RUN chmod 0644 /etc/cron.d/hello-cron
 RUN touch /var/log/cron.log
