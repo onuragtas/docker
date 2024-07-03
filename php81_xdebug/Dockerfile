@@ -81,6 +81,8 @@ RUN curl -sSL "https://codeload.github.com/phalcon/cphalcon/tar.gz/v${PHALCON_VE
 
 RUN apt-get install -y --reinstall procps
 
+RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Istanbul /etc/localtime
+
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
 

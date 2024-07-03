@@ -2,6 +2,10 @@ FROM php:5.6-fpm
 
 ENV COMPOSER_HOME=/root/.composer
 
+RUN echo "deb [trusted=yes] http://archive.debian.org/debian stretch main non-free contrib" > /etc/apt/sources.list
+RUN echo "deb-src [trusted=yes] http://archive.debian.org/debian stretch main non-free contrib" >> /etc/apt/sources.list
+RUN echo "deb [trusted=yes] http://archive.debian.org/debian-security stretch/updates main non-free contrib" >> /etc/apt/sources.list
+
 RUN apt-get update \
     && apt-get install -q -y  --force-yes --no-install-recommends nano curl git wget zip unzip libpq-dev
 
