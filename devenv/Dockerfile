@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 LABEL maintainer="hakanbysl@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
