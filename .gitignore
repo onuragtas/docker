@@ -25,3 +25,4 @@ arangodb_apps_data_container/*
 .idea/workspace.xml
 .idea
 etc/prometheus.yml
+grafana/datasource.yml
