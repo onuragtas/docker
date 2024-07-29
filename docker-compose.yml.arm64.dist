@@ -677,6 +677,7 @@ services:
       net:
 
   prometheus:
+    container_name: prometheus
     image: prom/prometheus
     volumes:
       - "./etc/prometheus.yml:/etc/prometheus/prometheus.yml"
