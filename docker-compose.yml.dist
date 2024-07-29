@@ -662,6 +662,16 @@ services:
       net:
 
 
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - "./etc/prometheus.yml:/etc/prometheus/prometheus.yml"
+    networks:
+      - net
+    ports:
+      - ${PROMETHEUS_PORT}:9090
+
+
 networks:
     net:
       ipam:

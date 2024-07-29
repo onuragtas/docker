@@ -24,3 +24,4 @@ arangodb_data_container/*
 arangodb_apps_data_container/*
 .idea/workspace.xml
 .idea
+etc/prometheus.yml
