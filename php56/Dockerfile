@@ -16,6 +16,8 @@ RUN apt-get install -y --force-yes libmemcached11 libmemcachedutil2 build-essent
 RUN apt-get install -y --force-yes \
         libssl-dev libxslt1-dev \
         libfreetype6-dev \
+        libzip-dev \
+        zip \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         zlib1g-dev libicu-dev g++ \

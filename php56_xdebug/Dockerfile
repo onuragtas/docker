@@ -17,6 +17,8 @@ RUN apt-get install -y --force-yes \
         libssl-dev libxslt1-dev \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
+        libzip-dev \
+        zip \
         libmcrypt-dev \
         zlib1g-dev libicu-dev g++ \
         && docker-php-ext-configure intl && docker-php-ext-install intl \

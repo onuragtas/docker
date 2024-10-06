@@ -12,6 +12,8 @@ RUN apt-get update \
         libicu-dev \
         g++ \
         unixodbc-dev \
+    libzip-dev \
+            zip \
         libxml2-dev \
         libaio-dev \
         libmemcached-dev \

@@ -16,6 +16,8 @@ RUN apt-get update \
         libmemcached-dev \
         freetds-dev \
         libyaml-dev \
+    libzip-dev \
+            zip \
 	libssl-dev \
 	openssl \
 	libcurl4-gnutls-dev \

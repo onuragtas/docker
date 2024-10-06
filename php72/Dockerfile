@@ -9,6 +9,8 @@ RUN apt-get update \
         libpng-dev \
         zlib1g-dev \
         libicu-dev \
+        libzip-dev \
+        zip \
         g++ \
         unixodbc-dev \
         libxml2-dev \
