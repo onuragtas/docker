@@ -30,7 +30,7 @@ RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Istanbul /etc/localt
 
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && pecl install redis \
+    && pecl install redis-5.3.6 \
     && pecl install memcached-3.0.0 \
     && pecl install mongodb-1.9.1 \
     && pecl install yaml \
