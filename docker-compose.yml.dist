@@ -204,6 +204,58 @@ services:
       net:
         ipv4_address: ${MONGODB_HOST}
 
+  mongodb42:
+      image: mongo:4.2
+      container_name: mongodb42
+      restart: always
+      environment:
+        - MONGO_DATA_DIR=/data/db
+        - MONGO_LOG_DIR=/dev/null
+        - MONGODB_USER=${MONGODB_USER}
+        - MONGODB_PASS=${MONGODB_PASS}
+      volumes:
+        - './mongo42/db:/data/db'
+      ports:
+        - ${MONGODB42_PORT}:27017
+      networks:
+        net:
+          ipv4_address: ${MONGODB42_HOST}
+
+  mongodb32:
+      image: mongo:3.2
+      container_name: mongodb32
+      restart: always
+      environment:
+        - MONGO_DATA_DIR=/data/db
+        - MONGO_LOG_DIR=/dev/null
+        - MONGODB_USER=${MONGODB_USER}
+        - MONGODB_PASS=${MONGODB_PASS}
+      volumes:
+        - './mongo32/db:/data/db'
+      ports:
+        - ${MONGODB32_PORT}:27017
+      networks:
+        net:
+          ipv4_address: ${MONGODB32_HOST}
+
+  mongodb60:
+      image: mongo:6.0
+      container_name: mongodb60
+      restart: always
+      environment:
+        - MONGO_DATA_DIR=/data/db
+        - MONGO_LOG_DIR=/dev/null
+        - MONGODB_USER=${MONGODB_USER}
+        - MONGODB_PASS=${MONGODB_PASS}
+      volumes:
+        - './mongo60/db:/data/db'
+      ports:
+        - ${MONGODB60_PORT}:27017
+      networks:
+        net:
+          ipv4_address: ${MONGODB60_HOST}
+
+
   graylog:
     image: graylog/graylog:3.3.4-1
     restart: always
