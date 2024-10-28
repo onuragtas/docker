@@ -255,6 +255,23 @@ services:
         net:
           ipv4_address: ${MONGODB60_HOST}
 
+  mongodb80:
+      image: mongo:8.0
+      container_name: mongodb80
+      restart: always
+      environment:
+        - MONGO_DATA_DIR=/data/db
+        - MONGO_LOG_DIR=/dev/null
+        - MONGODB_USER=${MONGODB_USER}
+        - MONGODB_PASS=${MONGODB_PASS}
+      volumes:
+        - './mongo80/db:/data/db'
+      ports:
+        - ${MONGODB80_PORT}:27017
+      networks:
+        net:
+          ipv4_address: ${MONGODB80_HOST}
+
   graylog:
     image: graylog/graylog:3.3.4-1
     restart: always
