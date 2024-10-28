@@ -26,3 +26,4 @@ arangodb_apps_data_container/*
 .idea
 etc/prometheus.yml
 grafana/datasource.yml
+devenv.json
