@@ -207,6 +207,7 @@ services:
   mongodb42:
       image: mongo:4.2
       container_name: mongodb42
+      platform: linux/amd64
       restart: always
       environment:
         - MONGO_DATA_DIR=/data/db
@@ -224,6 +225,7 @@ services:
   mongodb32:
       image: mongo:3.2
       container_name: mongodb32
+      platform: linux/amd64
       restart: always
       environment:
         - MONGO_DATA_DIR=/data/db
@@ -241,6 +243,7 @@ services:
   mongodb60:
       image: mongo:6.0
       container_name: mongodb60
+      platform: linux/amd64
       restart: always
       environment:
         - MONGO_DATA_DIR=/data/db
