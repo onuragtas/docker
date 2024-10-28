@@ -27,3 +27,4 @@ arangodb_apps_data_container/*
 etc/prometheus.yml
 grafana/datasource.yml
 devenv.json
+fix_metadata.py
