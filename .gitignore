@@ -8,6 +8,10 @@ postgres/*
 logs/*
 Ssl/*
 mongo/*
+mongo32/*
+mongo42/*
+mongo60/*
+mongo80/*
 pgadmin/*
 logs/access.log
 logs/error.log
