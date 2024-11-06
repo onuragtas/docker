@@ -787,7 +787,7 @@ services:
       KC_ADMIN_PASSWORD: admin
     volumes:
       - ./keycloak_data:/opt/keycloak/data
-      - ./keycloak-logs:/opt/keycloak/data/transaction-logs
+      - ./keycloak_logs:/opt/keycloak/data/transaction-logs
     depends_on:
       - postgres
     networks:

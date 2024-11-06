@@ -32,4 +32,6 @@ grafana/datasource.yml
 devenv.json
 fix_metadata.py
 keycloak/*
+keycloak_data
+keycloak_logs
 docker.iml
