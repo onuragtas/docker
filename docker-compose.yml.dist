@@ -756,15 +756,27 @@ services:
       - ./grafana:/etc/grafana/provisioning/datasources
 
   keycloak:
-    build: ./keycloak
-    container_name: keycloak
-    user: root
-    ports:
-      - "9098:8080"
-    environment:
-      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
-      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
-    restart: unless-stopped
+      # build: .
+      restart: on-failure:5
+      image: quay.io/keycloak/keycloak:25.0.1
+      environment:
+        KC_LOG_LEVEL: debug
+        KC_DB: postgres
+        KC_DB_URL: 'jdbc:postgresql://postgres/keycloak'
+        KC_DB_USERNAME: ${POSTGRES_USER:-postgres}
+        KC_DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+        KC_DB_SCHEMA: public
+        KC_HOSTNAME: ${KC_HOSTNAME:-your.tld.com}
+        KC_HTTP_ENABLED: true
+        HTTP_ADDRESS_FORWARDING: true
+        KEYCLOAK_ADMIN: admin
+        KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-admin}
+        # KC_PROXY_HEADERS: xforwarded
+      # command: start --optimized
+      ports:
+        - '8091:8080'
+      depends_on:
+        - postgres
 
 networks:
     net:
