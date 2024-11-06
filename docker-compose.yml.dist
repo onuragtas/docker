@@ -764,10 +764,10 @@ services:
       - ./keycloak_providers:/opt/keycloak/providers
     environment:
       KC_LOG_LEVEL: debug
-      KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://host.docker.internal:${POSTGRES_PORT}/keycloak
-      KC_DB_USERNAME: ${POSTGRES_USER}
-      KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_DB: ${KC_DB}
+      KC_DB_URL: ${KC_DB_URL}
+      KC_DB_USERNAME: ${KC_DB_USERNAME}
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
       KC_HTTP_ENABLED: "true"
       HTTP_ADDRESS_FORWARDING: "true"
       KEYCLOAK_ADMIN: admin
