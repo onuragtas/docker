@@ -768,27 +768,26 @@ services:
       - ./grafana:/etc/grafana/provisioning/datasources
 
   keycloak:
-      # build: .
-      restart: on-failure:5
-      image: quay.io/keycloak/keycloak:25.0.1
-      environment:
-        KC_LOG_LEVEL: debug
-        KC_DB: postgres
-        KC_DB_URL: 'jdbc:postgresql://postgres/keycloak'
-        KC_DB_USERNAME: ${POSTGRES_USER:-postgres}
-        KC_DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-        KC_DB_SCHEMA: public
-        KC_HOSTNAME: ${KC_HOSTNAME:-your.tld.com}
-        KC_HTTP_ENABLED: true
-        HTTP_ADDRESS_FORWARDING: true
-        KEYCLOAK_ADMIN: admin
-        KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-admin}
-        # KC_PROXY_HEADERS: xforwarded
-      # command: start --optimized
-      ports:
-        - '8091:8080'
-      depends_on:
-        - postgres
+    build: ./keycloak
+    restart: on-failure:5
+    container_name: keycloak
+    volumes:
+      - ./keycloak_data:/opt/keycloak/data
+      - ./keycloak_providers:/opt/keycloak/providers
+    environment:
+      KC_LOG_LEVEL: debug
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://host.docker.internal:${POSTGRES_PORT}/keycloak
+      KC_DB_USERNAME: ${POSTGRES_USER}
+      KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KC_HTTP_ENABLED: true
+      HTTP_ADDRESS_FORWARDING: true
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-admin}
+    ports:
+      - ${KEYCLOAK_PORT}:8080
+    depends_on:
+      - postgres
 
 networks:
     net:
