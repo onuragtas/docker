@@ -768,7 +768,7 @@ services:
       KC_DB_URL: jdbc:postgresql://host.docker.internal:${POSTGRES_PORT}/keycloak
       KC_DB_USERNAME: ${POSTGRES_USER}
       KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
-      KC_HTTP_ENABLED: true
+      KC_HTTP_ENABLED: "true"
       HTTP_ADDRESS_FORWARDING: "true"
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-admin}
