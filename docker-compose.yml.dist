@@ -773,6 +773,8 @@ services:
       - KC_DB_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - postgres
+    volumes:
+      - ./keycloak-data:/opt/keycloak/data
 
 networks:
     net:
