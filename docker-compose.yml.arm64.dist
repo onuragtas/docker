@@ -773,7 +773,9 @@ services:
       - ./grafana:/etc/grafana/provisioning/datasources
 
   keycloak:
-      image: quay.io/keycloak/keycloak:26.0.0
+      build:
+        context: .
+        dockerfile: Dockerfile
       container_name: keycloak
       environment:
         - KEYCLOAK_ADMIN=admin
@@ -781,7 +783,6 @@ services:
         - KEYCLOAK_PORT=8080
       ports:
         - "${KEYCLOAK_PORT}:8080"
-      command: start-dev
 
 networks:
     net:
