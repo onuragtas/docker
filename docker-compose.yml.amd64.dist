@@ -768,28 +768,15 @@ services:
       - ./grafana:/etc/grafana/provisioning/datasources
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.0.5
-    container_name: keycloak
-    command: start-dev
-    environment:
-      KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
-      KC_DB_USERNAME: postgres
-      KC_DB_PASSWORD: postgres
-      KC_DB_VENDOR: postgres
-      KC_HTTP_PORT: 8080
-      KC_ADMIN_USERNAME: admin
-      KC_ADMIN_PASSWORD: admin
-    volumes:
-      - ./keycloak_data:/opt/keycloak/data
-      - ./keycloak_logs:/opt/keycloak/data/transaction-logs
-    depends_on:
-      - postgres
-    networks:
-      - net
-    ports:
-      - "8081:8080"
-    restart: unless-stopped
+      image: quay.io/keycloak/keycloak:26.0.0
+      container_name: keycloak
+      environment:
+        - KEYCLOAK_ADMIN=admin
+        - KEYCLOAK_ADMIN_PASSWORD=admin
+        - KEYCLOAK_PORT=8080
+      ports:
+        - "${KEYCLOAK_PORT}:8080"
+      command: start-dev
 
 networks:
     net:
