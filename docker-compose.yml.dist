@@ -776,7 +776,6 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     command: start-dev
     volumes:
-      - ./keycloak/data:/opt/keycloak/data
       - ./keycloak/providers:/opt/keycloak/providers
     depends_on:
       - postgres
