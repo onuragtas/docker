@@ -19,6 +19,7 @@ RUN apt-get install -y --force-yes \
         libjpeg62-turbo-dev \
         libzip-dev \
         zip \
+        unzip \
         libmcrypt-dev \
         zlib1g-dev libicu-dev g++ \
         && docker-php-ext-configure intl && docker-php-ext-install intl \

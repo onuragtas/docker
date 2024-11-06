@@ -18,6 +18,7 @@ RUN apt-get install -y --force-yes \
         libfreetype6-dev \
         libzip-dev \
         zip \
+        unzip \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         zlib1g-dev libicu-dev g++ \

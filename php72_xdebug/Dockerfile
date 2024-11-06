@@ -14,6 +14,7 @@ RUN apt-get update \
         unixodbc-dev \
     libzip-dev \
             zip \
+            unzip \
         libxml2-dev \
         libaio-dev \
         libmemcached-dev \
