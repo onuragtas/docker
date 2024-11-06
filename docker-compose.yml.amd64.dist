@@ -770,6 +770,7 @@ services:
   keycloak:
     build: ./keycloak
     container_name: keycloak
+    user: root
     ports:
       - "9098:8080"
     environment:
