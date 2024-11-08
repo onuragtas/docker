@@ -11,4 +11,4 @@ FROM quay.io/keycloak/keycloak:25.0.1
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 # Add ENTRYPOINT
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--features=scripts"]
