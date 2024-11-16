@@ -34,3 +34,4 @@ fix_metadata.py
 keycloak_data
 keycloak_providers
 docker.iml
+data/*
