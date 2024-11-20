@@ -431,7 +431,6 @@ services:
       - './logs/:/var/log/nginx/'
       - ${NGINX_SSL_PATH}:/root/Ssl/
       - './etc/nginx.conf/:/etc/nginx/nginx.conf'
-      - '/var/run/docker.sock:/var/run/docker.sock'
 
 
   php72:
