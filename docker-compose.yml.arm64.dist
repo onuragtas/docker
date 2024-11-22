@@ -800,7 +800,7 @@ services:
     networks:
       - net
     ports:
-      - ${SSH_UI_PORT}:8182
+      - 2222:8182
     restart: always
 
 networks:
