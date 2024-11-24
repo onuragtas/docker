@@ -652,7 +652,7 @@ services:
         - ./php56/php.ini:/usr/local/etc/php/php.ini
       networks:
         net:
-        
+
   arangodb:
     image: arangodb:latest
     environment:
@@ -662,9 +662,9 @@ services:
     volumes:
       - ./arangodb_data_container:/var/lib/arangodb3
       - ./arangodb_apps_data_container:/var/lib/arangodb3-apps
-  
+
   ftpserver:
-    container_name: ftp
+    container_name: ftpserver
     image: iradu/proftpd:latest
     ports:
       - "21:21"
