@@ -794,6 +794,15 @@ services:
     depends_on:
       - postgres
 
+  ssh_ui:
+    image: niruix/sshwifty:latest
+    container_name: ssh_ui
+    networks:
+      - net
+    ports:
+      - 2222:8182
+    restart: always
+
 networks:
     net:
       ipam:
