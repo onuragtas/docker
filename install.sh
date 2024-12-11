@@ -101,8 +101,8 @@ fi
 echo ""
 
 echo "Cleaning up... Configuration for elasticsearch"
-sudo sysctl -w vm.max_map_count=2048000
-sudo sysctl -w fs.file-max=65536
+#sudo sysctl -w vm.max_map_count=2048000
+#sudo sysctl -w fs.file-max=65536
 cd $WORKDIR
 docker-compose down
 docker-compose up -d --build
