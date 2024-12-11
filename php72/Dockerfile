@@ -2,6 +2,7 @@ FROM php:7.2-fpm
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
+     	libssh2-1-dev \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
@@ -9,10 +10,11 @@ RUN apt-get update \
         libpng-dev \
         zlib1g-dev \
         libicu-dev \
-        libzip-dev \
-        zip \
         g++ \
         unixodbc-dev \
+    libzip-dev \
+            zip \
+            unzip \
         libxml2-dev \
         libaio-dev \
         libmemcached-dev \
@@ -31,10 +33,9 @@ RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Istanbul /etc/localt
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && pecl install redis-5.3.6 \
-    && pecl install memcached-3.0.1 \
-    && pecl install mongodb-1.5.3 \
+    && pecl install memcached-3.0.0 \
+    && pecl install mongodb-1.6.0 \
     && pecl install yaml \
-    && pecl install grpc-1.64.1 \
     && docker-php-ext-install \
 	    curl \
             iconv \
@@ -47,7 +48,6 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
             soap \
             sockets \
             zip \
-            unzip \
             pcntl \
             ftp \
             pgsql \

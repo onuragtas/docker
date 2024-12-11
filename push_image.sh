@@ -28,9 +28,11 @@ if ! docker buildx inspect builder &>/dev/null; then
   docker buildx create --use
 fi
 
+docker system prune --all --force
+docker builder prune
 # Çoklu platform için Docker imajını build et ve pushla
 echo "Docker imajı build ediliyor ve pushlanıyor..."
-DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64,linux/arm64 --cache-to=type=local,dest=/tmp/.buildx-cache,mode=max --cache-from=type=local,src=/tmp/.buildx-cache -t "$IMAGE_NAME" --push "$DOCKERFILE_PATH"
+docker buildx build --platform linux/amd64,linux/arm64 -t "$IMAGE_NAME" --push --debug "$DOCKERFILE_PATH"
 
 if [ $? -eq 0 ]; then
   echo "İşlem tamamlandı. İmaj: $IMAGE_NAME"

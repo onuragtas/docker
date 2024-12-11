@@ -20,11 +20,16 @@ jobs:
       -
         uses: actions/checkout@v3
         name: Checkout
-      -
-        name: ls -la
-        run: ls -la
-      -
-        uses: docker/login-action@v2
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-docker-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
+
+      - uses: docker/login-action@v2
         name: Login to Docker Hub
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -34,5 +39,4 @@ jobs:
         name: Setup buildx
       -
         name: Build the php72
-        run: docker buildx build --platform linux/amd64,linux/arm64 -t onuragtas/php7.2-fpm:latest --push ./php72/.
-
+        run: docker buildx build --platform linux/amd64,linux/arm64 --cache-from=type=registry,ref=onuragtas/php7.2-fpm:latest -t onuragtas/php7.2-fpm:latest --push ./php72/.

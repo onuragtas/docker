@@ -33,10 +33,9 @@ RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Istanbul /etc/localt
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && pecl install redis-5.3.6 \
-    && pecl install memcached-3.0.1 \
-    && pecl install mongodb-1.5.3 \
+    && pecl install memcached-3.0.0 \
+    && pecl install mongodb-1.6.0 \
     && pecl install yaml \
-    && pecl install grpc-1.64.1 \
     && docker-php-ext-install \
 	    curl \
             iconv \
