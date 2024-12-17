@@ -701,7 +701,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   kafdrop:
-    image: obsidiandynamics/kafdrop:latest
+    image: provectuslabs/kafka-ui
     networks:
       - net
     depends_on:
