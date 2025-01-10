@@ -38,8 +38,8 @@ docker run --privileged \
         -v /root/.docker-environment/httpd/sites-enabled/$2:/usr/local/httpd \
         --network lemp_net \
         --memory="2g" \
-        --memory-swap="3g" \
-        --cpus="1" \
+        --memory-swap="2g" \
+        --cpus="1.5" \
         hakanbaysal/devenv:latest
 
 sleep 5
