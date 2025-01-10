@@ -40,6 +40,7 @@ docker run --privileged \
         --memory="1g" \
         --memory-swap="1g" \
         --cpus="1.5" \
+        hakanbaysal/devenv:latest
 
 sleep 5
 
