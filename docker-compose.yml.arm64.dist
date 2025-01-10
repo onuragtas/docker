@@ -148,7 +148,6 @@ services:
       - cluster.initial_master_nodes=elasticsearch
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
-    mem_limit: 4g
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
       - ./etc/elasticsearch/jvm.options:/usr/share/elasticsearch/config/jvm.options
