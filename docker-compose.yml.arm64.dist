@@ -279,6 +279,8 @@ services:
   graylog:
     image: graylog/graylog:3.3.4-1
     restart: always
+    extra_hosts:
+      mongo: ${MONGODB_HOST}
     container_name: graylog
     environment:
       - GRAYLOG_PASSWORD_SECRET=somepasswordpepper  #Password: admin
