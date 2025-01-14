@@ -281,6 +281,7 @@ services:
     restart: always
     extra_hosts:
       mongo: ${MONGODB_HOST}
+      elasticsearch: ${ELASTIC_GRAYLOG_HOST}
     container_name: graylog
     environment:
       - GRAYLOG_PASSWORD_SECRET=somepasswordpepper  #Password: admin
