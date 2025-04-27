@@ -279,6 +279,9 @@ services:
   graylog:
     image: graylog/graylog:3.3.4-1
     restart: always
+    extra_hosts:
+      mongo: ${MONGODB_HOST}
+      elasticsearch: ${ELASTIC_GRAYLOG_HOST}
     container_name: graylog
     environment:
       - GRAYLOG_PASSWORD_SECRET=somepasswordpepper  #Password: admin
@@ -721,7 +724,7 @@ services:
     depends_on:
       - kafka
     ports:
-      - "8080:8080"
+      - ${KAFDROP_PORT}:8080
     restart: always
     environment:
       - KAFKA_CLUSTERS_0_NAME=local

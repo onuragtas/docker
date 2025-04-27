@@ -36,7 +36,11 @@ docker run --privileged \
         -v /sites/$2/.configs:/root/.configs \
         -v /root/.docker-environment/etc/nginx/$2:/usr/local/nginx \
         -v /root/.docker-environment/httpd/sites-enabled/$2:/usr/local/httpd \
-        --network lemp_net hakanbaysal/devenv:latest
+        --network lemp_net \
+        --memory="4g" \
+        --memory-swap="6g" \
+        --cpus="1.5" \
+        hakanbaysal/devenv:latest
 
 sleep 5
 

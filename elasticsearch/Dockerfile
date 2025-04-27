@@ -4,6 +4,9 @@ RUN elasticsearch-plugin install analysis-icu|true
 
 ARG HUNSPELL_BASE_URL='https://raw.githubusercontent.com/LibreOffice/dictionaries/master'
 
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* \
+ && sed -i 's|#baseurl=http://mirror.centos.org|baseurl=https://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
 RUN yum install -y hunspell wget
 
 RUN mkdir -p /usr/share/hunspell /usr/share/elasticsearch/config/hunspell \

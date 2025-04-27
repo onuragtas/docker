@@ -277,6 +277,9 @@ services:
     image: graylog/graylog:3.3.4-1
     restart: always
     container_name: graylog
+    extra_hosts:
+      mongo: ${MONGODB_HOST}
+      elasticsearch: ${ELASTIC_GRAYLOG_HOST}
     environment:
       - GRAYLOG_PASSWORD_SECRET=somepasswordpepper  #Password: admin
       - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
@@ -701,13 +704,13 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   kafdrop:
-    image: obsidiandynamics/kafdrop:latest
+    image: provectuslabs/kafka-ui
     networks:
       - net
     depends_on:
       - kafka
     ports:
-      - ${KAFDROP_PORT}:9000
+      - ${KAFDROP_PORT}:8080
     environment:
       KAFKA_BROKERCONNECT: kafka:29092
 
