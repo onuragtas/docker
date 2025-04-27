@@ -30,6 +30,7 @@ arangodb_apps_data_container/*
 etc/prometheus.yml
 grafana/datasource.yml
 devenv.json
+saved_commands.json
 fix_metadata.py
 keycloak_data
 keycloak_providers
