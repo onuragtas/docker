@@ -53,6 +53,7 @@ RUN wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz -O /usr/local/go.linux-am
 RUN tar -vxf /usr/local/go.linux-amd64.tar.gz -C /usr/local/
 RUN ln -s /usr/local/go/bin/go /usr/local/bin/go
 
+RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php84_xdebug \$@" >> /usr/local/bin/php84_container && chmod +x /usr/local/bin/php84_container
 RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php81_xdebug \$@" >> /usr/local/bin/php81_container && chmod +x /usr/local/bin/php81_container
 RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php74_xdebug \$@" >> /usr/local/bin/php74_container && chmod +x /usr/local/bin/php74_container
 RUN echo "docker -H 192.168.36.240:4243 exec -w /var/www/html/\$(cat /root/.username)/\$(basename "\$PWD") php72_xdebug \$@" >> /usr/local/bin/php72_container && chmod +x /usr/local/bin/php72_container
