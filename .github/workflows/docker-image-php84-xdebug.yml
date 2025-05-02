@@ -1,4 +1,4 @@
-name: Docker Image CI PHP81_Xdebug
+name: Docker Image CI PHP84_Xdebug
 
 on:
   push:
