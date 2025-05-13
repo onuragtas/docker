@@ -76,8 +76,8 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
 #    && docker-php-ext-enable redis memcached mongodb yaml sqlsrv pdo_sqlsrv
 
 # Xdebug (PHP 8.4 uyumlu sürüm)
-# RUN pecl install xdebug \
-#    && docker-php-ext-enable xdebug
+RUN pecl install xdebug-3.4.2 \
+  && docker-php-ext-enable xdebug
 
 # Xdebug konfigürasyonu
 ARG XDEBUG_HOST
