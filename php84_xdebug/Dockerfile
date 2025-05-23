@@ -86,6 +86,8 @@ RUN echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini \
  && echo "xdebug.client_host=$XDEBUG_HOST" >> /usr/local/etc/php/conf.d/xdebug.ini \
  && echo "xdebug.client_port=$XDEBUG_PORT" >> /usr/local/etc/php/conf.d/xdebug.ini
 
+RUN echo "zend.exception_ignore_args=Off" > /usr/local/etc/php/conf.d/zend-exception.ini
+
 # Composer kurulumu
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer --version
