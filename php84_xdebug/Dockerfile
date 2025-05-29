@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     cron \
     librdkafka-dev \
     pkg-config \
+    redis \
     && apt-get clean
 
 # Microsoft SQL Server sürücüleri
@@ -47,6 +48,11 @@ RUN pecl install rdkafka \
 # YAML uzantısı kurulumu
 RUN pecl install yaml \
  && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini
+
+# Redis uzantısı kurulumu
+RUN pecl install redis \
+ && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
+ && docker-php-ext-enable redis
 
 # Derleyici güncellemeleri
 RUN apt-get update && apt-get install -y gcc-11 g++-11 \
@@ -97,4 +103,4 @@ ADD crontab /etc/cron.d/hello-cron
 RUN chmod 0644 /etc/cron.d/hello-cron && touch /var/log/cron.log
 
 # Başlangıç komutu
-CMD cron && php-fpm
+CMD ["sh", "-c", "cron && php-fpm"]
