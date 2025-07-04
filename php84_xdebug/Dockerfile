@@ -29,6 +29,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     inetutils-ping \
     unixodbc-dev \
     cron \
+    librdkafka-dev \
+    pkg-config \
+    redis \
     && apt-get clean
 
 # Microsoft SQL Server sürücüleri
@@ -38,16 +41,25 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     apt-get install -y msodbcsql18 mssql-tools18 unixodbc-dev && \
     echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
 
-# PHP uzantılarının kurulumu
+# PHP Kafka uzantısı kurulumu
+RUN pecl install rdkafka \
+ && echo "extension=rdkafka.so" > /usr/local/etc/php/conf.d/rdkafka.ini
+
+# YAML uzantısı kurulumu
 RUN pecl install yaml \
  && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini
 
-RUN apt-get update && apt-get install -y libicu-dev libicu-dev pkg-config
+# Redis uzantısı kurulumu
+RUN pecl install redis \
+ && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
+ && docker-php-ext-enable redis
 
+# Derleyici güncellemeleri
 RUN apt-get update && apt-get install -y gcc-11 g++-11 \
  && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 \
  && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 100
 
+# PHP uzantılarının kurulumu
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) \
         curl \
@@ -66,16 +78,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
         ftp \
         opcache
 
-# PECL uzantıları kurulumu
-#RUN pecl install redis \
-#    && pecl install memcached \
-#    && pecl install mongodb \
-#    && pecl install yaml \
-#    && pecl install sqlsrv \
-#    && pecl install pdo_sqlsrv \
-#    && docker-php-ext-enable redis memcached mongodb yaml sqlsrv pdo_sqlsrv
-
-# Xdebug (PHP 8.4 uyumlu sürüm)
+# Xdebug kurulumu (PHP 8.4 uyumlu)
 RUN pecl install xdebug-3.4.2 \
   && docker-php-ext-enable xdebug
 
@@ -89,8 +92,7 @@ RUN echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini \
  && echo "xdebug.client_host=$XDEBUG_HOST" >> /usr/local/etc/php/conf.d/xdebug.ini \
  && echo "xdebug.client_port=$XDEBUG_PORT" >> /usr/local/etc/php/conf.d/xdebug.ini
 
-# YAML uzantısı yapılandırması
-RUN echo "extension=yaml.so" > /usr/local/etc/php/conf.d/yaml.ini
+RUN echo "zend.exception_ignore_args=Off" > /usr/local/etc/php/conf.d/zend-exception.ini
 
 # Composer kurulumu
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
@@ -101,4 +103,4 @@ ADD crontab /etc/cron.d/hello-cron
 RUN chmod 0644 /etc/cron.d/hello-cron && touch /var/log/cron.log
 
 # Başlangıç komutu
-CMD cron && php-fpm
+CMD ["sh", "-c", "cron && php-fpm"]
