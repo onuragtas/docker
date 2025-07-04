@@ -40,7 +40,7 @@ RUN chmod +x /usr/local/bin/ci.sh
 
 RUN wget https://github.com/onuragtas/redock/releases/latest/download/redock_Linux_amd64 -O /usr/local/redock
 RUN chmod +x /usr/local/redock
-RUN echo "/usr/local/redock --devenv" >> /usr/local/bin/redock
+RUN echo "/usr/local/redock" >> /usr/local/bin/redock
 RUN chmod +x /usr/local/bin/redock
 
 RUN wget https://gist.githubusercontent.com/onuragtas/c6dddddd6a8e6b8663f4f0043fec052a/raw/eedfc5500af08a04099ad4eb51b5142c996db7fc/go-compiler.sh -O /usr/local/bin/go-compiler.sh -F
