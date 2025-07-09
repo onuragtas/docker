@@ -673,8 +673,9 @@ services:
         - ./php56/php.ini:/usr/local/etc/php/php.ini
       networks:
         net:
-        
+
   arangodb:
+    container_name: arangodb
     image: arangodb:latest
     environment:
       ARANGO_ROOT_PASSWORD: FbJ9j8wF
@@ -683,7 +684,7 @@ services:
     volumes:
       - ./arangodb_data_container:/var/lib/arangodb3
       - ./arangodb_apps_data_container:/var/lib/arangodb3-apps
-  
+
   ftpserver:
     container_name: ftpserver
     image: iradu/proftpd:latest

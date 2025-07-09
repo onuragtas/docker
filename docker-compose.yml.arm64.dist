@@ -678,6 +678,7 @@ services:
         net:
 
   arangodb:
+    container_name: arangodb
     image: arangodb:latest
     environment:
       ARANGO_ROOT_PASSWORD: FbJ9j8wF
