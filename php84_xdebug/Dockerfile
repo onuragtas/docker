@@ -82,6 +82,9 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
 RUN pecl install xdebug-3.4.2 \
   && docker-php-ext-enable xdebug
 
+RUN pecl install mongodb \
+  && docker-php-ext-enable mongodb
+
 # Xdebug konfigürasyonu
 ARG XDEBUG_HOST
 ARG XDEBUG_PORT
