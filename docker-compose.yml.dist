@@ -830,6 +830,7 @@ services:
       - POSTGRESQL_PASSWORD=${POSTGRES_PASSWORD}
       - PGBOUNCER_AUTH_TYPE=${PGBOUNCER_AUTH_TYPE}
       - PGBOUNCER_POOL_MODE=${PGBOUNCER_POOL_MODE}
+      - PGBOUNCER_SERVER_TLS_SSLMODE=require
 
   proxysql:
     container_name: proxysql
