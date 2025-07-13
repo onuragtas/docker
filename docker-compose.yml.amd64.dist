@@ -827,6 +827,34 @@ services:
       - 2222:8182
     restart: always
 
+  pgbouncer:
+    container_name: pgbouncer
+    image: bitnami/pgbouncer:1.24.1
+    ports:
+      - "${PGBOUNCER_PORT}:6432"
+    networks:
+      - net
+    environment:
+      - POSTGRESQL_HOST=${POSTGRES_HOST}
+      - POSTGRESQL_PORT_NUMBER=${POSTGRES_PORT}
+      - POSTGRESQL_DATABASE=${POSTGRES_DB}
+      - POSTGRESQL_USERNAME=${POSTGRES_USER}
+      - POSTGRESQL_PASSWORD=${POSTGRES_PASSWORD}
+      - PGBOUNCER_AUTH_TYPE=${PGBOUNCER_AUTH_TYPE}
+      - PGBOUNCER_POOL_MODE=${PGBOUNCER_POOL_MODE}
+
+  proxysql:
+    container_name: proxysql
+    image: proxysql/proxysql:3.0.1
+    networks:
+      - net
+    volumes:
+      - "./etc/proxysql/proxysql.cnf:/etc/proxysql.cnf"
+      - "./data/proxysql:/var/lib/proxysql"
+    ports:
+      - "${PROXYSQL_PORT}:6033" # ProxySQL frontend
+      - "${PROXYSQL_ADMIN_PORT}:6032" # ProxySQL admin port
+
 networks:
     net:
       ipam:
