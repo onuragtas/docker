@@ -83,7 +83,9 @@ RUN pecl install xdebug-3.4.2 \
   && docker-php-ext-enable xdebug
 
 RUN pecl install mongodb \
-  && docker-php-ext-enable mongodb
+  && docker-php-ext-enable mongodb \
+
+RUN pecl install amqp && docker-php-ext-enable amqp
 
 # Xdebug konfigürasyonu
 ARG XDEBUG_HOST
