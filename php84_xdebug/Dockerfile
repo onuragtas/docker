@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     librdkafka-dev \
     pkg-config \
     redis \
+    rabbitmq-c-dev \
     && apt-get clean
 
 # Microsoft SQL Server sürücüleri
