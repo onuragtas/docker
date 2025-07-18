@@ -32,7 +32,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     librdkafka-dev \
     pkg-config \
     redis \
-    rabbitmq-c-dev \
     && apt-get clean
 
 # Microsoft SQL Server sürücüleri
@@ -85,8 +84,6 @@ RUN pecl install xdebug-3.4.2 \
 
 RUN pecl install mongodb \
   && docker-php-ext-enable mongodb
-
-RUN pecl install amqp && docker-php-ext-enable amqp
 
 # Xdebug konfigürasyonu
 ARG XDEBUG_HOST
