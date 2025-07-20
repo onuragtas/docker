@@ -27,6 +27,7 @@ touch /sites/$2/cron.d/cronlist
 
 docker run --privileged \
         -p $1:22 \
+        -p $4:6001 \
         --name="$2" \
         -d -e "PASSWORD=$3" \
         -v /sites/$2:/sites \
@@ -69,6 +70,7 @@ add_hosts $2 "order"
 add_hosts $2 "hgs-api"
 add_hosts $2 "admin"
 add_hosts $2 "evo"
+add_hosts $2 "redock"
 
 docker exec -it nginx sh -c "nginx -s reload"
 docker exec -it httpd sh -c "apache2ctl restart"

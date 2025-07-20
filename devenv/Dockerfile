@@ -83,5 +83,10 @@ EXPOSE 22 80 443 8090 9000 9001 9002 9003 9004 9005 9006 9007 9008 9010
 RUN mkdir /sites
 WORKDIR /sites
 
-CMD ["/usr/sbin/sshd", "-D"]
-ENTRYPOINT echo "root:${PASSWORD}" | chpasswd && service ssh restart && cron && cd /sites && bash && dockerd
+COPY redock-service.sh /usr/local/bin/redock-service.sh
+COPY startup.sh /usr/local/bin/startup.sh
+
+RUN chmod +x /usr/local/bin/redock-service.sh && \
+    chmod +x /usr/local/bin/startup.sh
+
+CMD ["/usr/local/bin/startup.sh"]
