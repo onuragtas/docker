@@ -32,6 +32,7 @@ docker run --privileged \
         -d -e "PASSWORD=$3" \
         -v /sites/$2:/sites \
         -v /sites/$2/.nvm:/root/.nvm \
+        -v /sites/$2/.docker-environment:/root/.docker-environment \
         -v /sites/$2/cron.d:/etc/cron.d \
         -v /sites/$2/.hosts/hosts:/etc/hosts \
         -v /sites/$2/.configs:/root/.configs \
