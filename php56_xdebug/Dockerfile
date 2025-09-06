@@ -24,7 +24,7 @@ RUN apt-get install -y --force-yes \
         zlib1g-dev libicu-dev g++ \
         && docker-php-ext-configure intl && docker-php-ext-install intl \
     && docker-php-ext-install  iconv mcrypt ftp \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-freetype --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install  gd
 
 RUN docker-php-ext-install exif gd mbstring intl xsl zip mysql mysqli pdo pdo_pgsql pdo_mysql soap bcmath sockets
