@@ -149,6 +149,23 @@ services:
     ports:
       - ${ELASTICSEARCH_PORT}:9200
 
+  elasticsearch80:
+    build: ./elasticsearch80
+    restart: always
+    container_name: elasticsearch80
+    environment:
+      - node.name=elasticsearch80
+      - cluster.name=docker-cluster
+      - cluster.initial_master_nodes=elasticsearch80
+    volumes:
+      - elasticsearch80_data:/usr/share/elasticsearch/data
+      - ./etc/elasticsearch/jvm.options:/usr/share/elasticsearch/config/jvm.options
+    networks:
+      net:
+        ipv4_address: ${ELASTICSEARCH80_HOST}
+    ports:
+      - ${ELASTICSEARCH80_PORT}:9200
+
   kibana:
     container_name: kibana
     image: 'kibana:7.3.2'
@@ -866,4 +883,6 @@ volumes:
   zookeeper_data:
     driver: local
   kafka_data:
+    driver: local
+  elasticsearch80_data:
     driver: local
