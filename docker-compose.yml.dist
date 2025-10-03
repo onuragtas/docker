@@ -871,6 +871,8 @@ services:
       - "${SUPERVISOR_PORT}:9002"
     volumes:
       - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+    - ./supervisor/supervisord.conf:/etc/supervisor/supervisord.conf
+    - ./supervisor/conf:/etc/supervisor/conf
     networks:
       - net
 
