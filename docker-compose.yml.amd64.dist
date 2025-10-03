@@ -874,6 +874,18 @@ services:
       - "${PROXYSQL_PORT}:6033" # ProxySQL frontend
       - "${PROXYSQL_ADMIN_PORT}:6032" # ProxySQL admin port
 
+
+  supervisor:
+    container_name: supervisor
+    build:
+      context: ./supervisor
+    ports:
+      - "${SUPERVISOR_PORT}:9002"
+    volumes:
+      - ${PROJECT_DEFAULT_PATH}:/var/www/html/
+    networks:
+      - net
+
 networks:
     net:
       ipam:

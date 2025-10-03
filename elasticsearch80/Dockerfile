@@ -1,2 +1,2 @@
-FROM elasticsearch:8.18.7
+FROM elasticsearch:8.11.4
 EXPOSE 9200

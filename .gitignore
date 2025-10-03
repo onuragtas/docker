@@ -36,3 +36,4 @@ keycloak_data
 keycloak_providers
 docker.iml
 data/*
+supervisor/conf/*
