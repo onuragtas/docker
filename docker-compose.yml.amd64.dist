@@ -380,6 +380,10 @@ services:
     environment:
       - REDIS_DEFAULT_PASSWORD=${REDIS_PASSWORD}
       - MASTER_DEFAULT_PASSWORD=${REDIS_PASSWORD}
+    ulimits:
+      nofile:
+        soft: 100000
+        hard: 100000
     ports:
       - ${REDIS_PORT}:6379
 
