@@ -1,4 +1,4 @@
-name: Docker Image PHP5.6 - FPM
+name: Docker Image Apache2
 
 on:
   push:
