@@ -1,13 +1,17 @@
-FROM ubuntu:latest
-LABEL maintainer="Sinan Turgut <mail@sinanturgut.com.tr>"
+FROM debian:12
 
-RUN apt-get update && apt-get install -y --force-yes nano unzip wget curl
+# Hash mismatch problemini kes
+RUN echo 'Acquire::By-Hash "no";' > /etc/apt/apt.conf.d/99no-by-hash
 
-RUN apt-get update && apt-get install -y --force-yes apache2 && apt-get clean
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    apt-get update -o Acquire::Retries=5 && \
+    apt-get install -y --no-install-recommends \
+        apache2 \
+        nano unzip wget curl && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN a2enmod proxy_http && a2enmod rewrite && a2enmod proxy_fcgi && a2enmod headers && a2enmod vhost_alias
-
+# Apache modülleri
+RUN a2enmod proxy_http rewrite proxy_fcgi headers vhost_alias
 
 EXPOSE 80
-ENTRYPOINT ["/usr/sbin/apache2ctl"]
-CMD ["-D", "FOREGROUND"]
+CMD ["apachectl", "-D", "FOREGROUND"]

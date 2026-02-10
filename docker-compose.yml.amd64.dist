@@ -425,7 +425,7 @@ services:
       - ${PHPMYADMIN_PORT}:80
 
   httpd:
-    build: ./httpd
+    image: onuragtas/apache2
     container_name: httpd
     restart: always
     tty: true
